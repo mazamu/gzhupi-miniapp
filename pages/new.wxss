@@ -1,0 +1,4 @@
+.test{
+/* margin: 50rpx; */
+width: 750rpx
+}

@@ -1,0 +1,38 @@
+{
+  "pages": [
+ 
+    "pages/demo/demo",
+      "pages/new"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Hello 广大",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "tabBar": {
+    "selectedColor": "",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/demo/demo",
+        "text": "教务",
+        "iconPath": "/assets/back.png",
+        "selectedIconPath": "/assets/back.png"
+      },
+      {
+        "pagePath": "pages/demo/demo",
+        "text": "广大墙",
+        "iconPath": "/assets/back.png",
+        "selectedIconPath": "/assets/back.png"
+      },
+      {
+        "pagePath": "pages/demo/demo",
+        "text": "我的",
+        "iconPath": "/assets/back.png",
+        "selectedIconPath": "/assets/back.png"
+      }
+    ]
+  }
+}

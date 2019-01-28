@@ -1,0 +1,11 @@
+<navBar title="Hello 广大" titleColor="" bgColor="rgba(255,255,255,{{opacity}})" hideTitle="" hideLogo="" hideBackBtn="true"></navBar>
+<view style='padding-top:{{capsule}}px'></view>
+
+<view bindtouchstart='start' bindtouchend='end' bindtap='tap'>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+  <image mode='widthFix' style='width:100%' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
+</view>
