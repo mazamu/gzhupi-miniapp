@@ -1,0 +1,28 @@
+<navBar title="广大派" titleColor="" navColor="{{navColor}}" hideBackBtn="true"></navBar>
+
+<!-- 悬浮图标 -->
+<view>
+  <image bindtap='tap' class='float-icon' mode='aspectFit' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1fx04mwWmqxrOljX.png'></image>
+  <button open-type="share">
+    <image class='share-icon' mode='aspectFit' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g3viOkNmZOlcqSF.png'></image>
+  </button>
+</view>
+
+
+<!-- 课表模式 -->
+<schedule show="{{schedule}}"></schedule>
+
+<view hidden="{{schedule}}" class='{{out}}'>
+
+  <!-- 导航模式 -->
+  <!-- 应用 -->
+  <app></app>
+  <view class='divide-line'></view>
+  <!-- 日课程 -->
+  <day todayCourse="{{todayCourse}}"></day>
+  <view class='divide-line'></view>
+  <!-- 成绩概览 -->
+  <grade></grade>
+  <view class='divide-line'></view>
+
+</view>

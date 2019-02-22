@@ -1,1 +1,12 @@
-/* pages/demo/demo.wxss */
+.t1{
+  background: red;
+  height: 300rpx;
+  width: 200rpx;
+  margin: 50rpx;
+  padding:20rpx
+}
+.t2{
+  background: rgb(153, 0, 255);
+  height: 440rpx;
+  width: 200rpx;
+}

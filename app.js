@@ -1,40 +1,86 @@
-//app.js
 App({
-  onLaunch: function () {
-  // console.log("hello")
-    // // 展示本地存储能力
-    // var logs = wx.getStorageSync('logs') || []
-    // logs.unshift(Date.now())
-    // wx.setStorageSync('logs', logs)
 
-    // // 登录
-    // wx.login({
-    //   success: res => {
-    //     // 发送 res.code 到后台换取 openId, sessionKey, unionId
-    //   }
-    // })
-    // // 获取用户信息
-    // wx.getSetting({
-    //   success: res => {
-    //     if (res.authSetting['scope.userInfo']) {
-    //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-    //       wx.getUserInfo({
-    //         success: res => {
-    //           // 可以将 res 发送给后台解码出 unionId
-    //           this.globalData.userInfo = res.userInfo
-
-    //           // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-    //           // 所以此处加入 callback 以防止这种情况
-    //           if (this.userInfoReadyCallback) {
-    //             this.userInfoReadyCallback(res)
-    //           }
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-  },
   globalData: {
-    userInfo: null
+    isAuthorized: false, //微信授权
+    bindStatus: false //学号绑定
+  },
+
+  onLaunch: function(options) {
+    console.log("App启动：", options)
+    // 初始化知晓云
+    wx.BaaS = requirePlugin('sdkPlugin')
+    wx.BaaS.wxExtend(wx.login, wx.getUserInfo, wx.requestPayment)
+    let clientID = 'd5add948fe00fbdd6cdf'
+    wx.BaaS.init(clientID)
+    wx.BaaS.ErrorTracker.enable()
+
+    if (options.scene == 1037 && JSON.stringify(options.referrerInfo) != "{}") {
+      this.getAuthStatus(options.referrerInfo.extraData)
+    } else {
+      this.getAuthStatus()
+    }
+
+  },
+
+  onError: function (res) {
+    wx.BaaS.ErrorTracker.track(res)
+   
+  },
+
+  // 获取认证状态
+  getAuthStatus(data = {}) {
+    let that = this
+
+    wx.getSetting({
+      success: res => {
+        if (res.authSetting['scope.userInfo']) {
+          console.log("已授权微信")
+          this.globalData.isAuthorized = true
+          wx.checkSession({
+            success() {
+              // session_key 未过期，并且在本生命周期一直有效
+            },
+            fail() {
+              // session_key 已经失效，需要重新执行登录流程
+              wx.login() // 重新登录
+            }
+          })
+        } else {
+          wx.navigateTo({
+            url: '/pages/Setting/login/bindStudent'
+          })
+        }
+      },
+      // 检测授权状态后 检测绑定状态
+      complete(res) {
+        wx.getStorage({
+          key: 'account',
+          success: function(res) {
+            console.log("已绑定学号")
+            that.globalData.bindStatus = true
+            that.globalData.account = res.data
+          },
+          fail: function(res) {
+            // 来自迁移
+            if (JSON.stringify(data) != "{}") {
+              that.migrate(data)
+            }
+          }
+        })
+      }
+    })
+  },
+
+  // 广大课表用户迁移
+  migrate(data = {}) {
+    wx.navigateTo({
+      url: '/pages/Setting/login/bindStudent?username=' + data.username + "&password=" + data.password
+    })
   }
+
 })
+
+// // 展示本地存储能力
+// var logs = wx.getStorageSync('logs') || []
+// logs.unshift(Date.now())
+// wx.setStorageSync('logs', logs)

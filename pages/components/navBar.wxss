@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  /* border: 1rpx solid red; */
+  z-index: 1001;
 }
 
 .title-bar {

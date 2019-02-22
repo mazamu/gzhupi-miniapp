@@ -1,5 +1,0 @@
-<!--pages/new.wxml-->
-<text>hello</text>
-<view>
-  <image class='test' mode='widthFix' bindtap='test' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g4HWigALPLjLelD.png'></image>
-</view>

@@ -1,6 +1,6 @@
-<!-- navBarHeight：导航栏高度，状态栏高度 + 40 -->
+<!-- navBarHeight：导航栏高度 = 状态栏高度 + 40 -->
 <!-- bgColor：导航栏背景颜色支持rgba -->
-<cover-view class='navBar' style='height:{{navBarHeight}}px;background-color:{{bgColor}}'>
+<cover-view class='navBar' style='height:{{navBarHeight}}px;background-color:{{navColor}}'>
 
   <!-- title-bar：标题栏，包含返回按键，高度 = 40 -->
   <cover-view class='title-bar' style='height:{{titleBarHeight}}px;margin-top:{{statusBarHeight}}px'>
@@ -10,6 +10,7 @@
     <cover-view class='title'>
       <!-- titleColor：传入标题 -->
       <cover-view hidden='{{hideTitle}}' style='color:{{titleColor}};opacity:1'>{{title}}</cover-view>
+      
       <cover-image hidden='{{hideLogo || !hideTitle}}' mode='widthFix' style='width:60rpx;height:60rpx' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1fx04mwWmqxrOljX.png'></cover-image>
     </cover-view>
 
@@ -22,3 +23,6 @@
 
   </cover-view>
 </cover-view>
+
+<!-- 导航栏空白占位 -->
+<view style='height:{{navBarHeight}}px'></view>

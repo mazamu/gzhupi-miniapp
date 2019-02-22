@@ -14,7 +14,7 @@ Component({
     },
 
     // 顶栏背景颜色，支持rgba
-    navColor: {
+    bgColor: {
       type: String,
       value: " "
     },
@@ -45,25 +45,21 @@ Component({
   methods: {
     // 返回上一页
     navigateBack() {
-      // console.log(getCurrentPages().length)
-      if (getCurrentPages().length == 1) {
-        wx.reLaunch({
-          url: '/pages/Campus/home/home',
-        })
-      } else(wx.navigateBack({
+      console.log(getCurrentPages().length)
+      wx.navigateBack({
         delta: 1
-      }))
+      })
     },
   },
 
   // 生命周期方法
   lifetimes: {
-    created: function() {},
+    created: function () { },
 
-    attached: function() {
+    attached: function () {
       let that = this
       wx.getSystemInfo({
-        success: function(res) {
+        success: function (res) {
           that.setData({
             statusBarHeight: res.statusBarHeight, //状态栏高度
             navBarHeight: res.statusBarHeight + 40 // 小程序导航栏高度
