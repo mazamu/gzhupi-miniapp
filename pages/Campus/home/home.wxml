@@ -1,4 +1,4 @@
-<navBar title="广大派" titleColor="" navColor="{{navColor}}" hideBackBtn="true"></navBar>
+<navBar title="广大课表" titleColor="" navColor="{{navColor}}" hideBackBtn="true"></navBar>
 
 <!-- 悬浮图标 -->
 <view>

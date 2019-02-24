@@ -41,7 +41,9 @@ Component({
          
           break
         case "5":
-          
+          wx.navigateTo({
+            url: '/pages/Campus/evaluation/evaluation',
+          })
           break
         case "6":
           // wx.navigateTo({

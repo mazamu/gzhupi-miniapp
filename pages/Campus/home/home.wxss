@@ -9,6 +9,29 @@
   right: 40rpx;
   z-index: 2;
   /* box-shadow: 0rpx 3rpx 5rpx 5rpx #ddd; */
+  -webkit-animation: rotate 15s linear 1000ms infinite;
+  animation: rotate 15s linear 1000ms infinite;
+}
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 
 .share-icon {
@@ -47,5 +70,3 @@
     opacity: 1;
   }
 }
-
-

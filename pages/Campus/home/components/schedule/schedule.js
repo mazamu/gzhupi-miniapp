@@ -153,8 +153,8 @@ Component({
 
     // 课程详情弹窗
     showDetail(e) {
+      let that = this
       let id = Number(e.currentTarget.id)
-      this.data.openTarget = id
       let day = this.data.kbList[id].weekday
       let start = this.data.kbList[id].start
       let detail = []
@@ -169,6 +169,20 @@ Component({
         showDetail: true,
         currentIndex: 0 //恢复滑动视图索引
       })
+      this.showCourseId(0)
+    },
+    // 左右滑动切换课程
+    switchCourse(e) {
+      this.showCourseId(e.detail.current)
+    },
+    // 打开或者切换时更新显示的课程数组索引
+    showCourseId(current) {
+      let course = this.data.detail[current]
+      for (let i = 0; i < this.data.kbList.length; i++) {
+        if (course == this.data.kbList[i]) {
+          this.data.openTarget = i
+        }
+      }
     },
 
     // 关闭课程详情弹窗
@@ -188,7 +202,7 @@ Component({
           break
         case "1": //添加
           wx.navigateTo({
-            url: '/pages/Campus/home/addCourse/addCourse',
+            url: '/pages/Campus/evaluation/evaluation',
           })
           break
         case "2": //删除

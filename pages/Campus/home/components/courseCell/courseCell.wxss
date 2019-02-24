@@ -14,7 +14,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 7px;
-  opacity: 0.9;
+  opacity: 0.95;
   /* box-shadow: 1rpx 1rpx 1rpx 1rpx #ddd; */
   /* -webkit-box-shadow: 2rpx 2rpx 4rpx 0rpx #ddd; */
 }

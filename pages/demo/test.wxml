@@ -1,5 +1,0 @@
-<navBar title="个人中心" titleColor="" navColor="" hideBackBtn="true"></navBar>
-
-<view style='margin-top:350rpx;display:flex;justify-content:center;align-item:center'>
-  <image style='width:250rpx' mode='widthFix' src='/assets/tabbar/mine-selected.png'></image>
-</view>

@@ -2,11 +2,12 @@
   "pages": [
     "pages/Campus/home/home",
     "pages/Setting/login/bindStudent",
-    "pages/demo/demo",
     "pages/Campus/home/addCourse/addCourse",
     "pages/Campus/grade/grade",
     "pages/Campus/tools/calendar",
-    "pages/demo/test"
+    "pages/Life/wall/wall",
+    "pages/Setting/mine/mine",
+    "pages/Campus/evaluation/evaluation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -26,7 +27,7 @@
     }
   },
   "tabBar": {
-    "selectedColor":"#06cd0f",
+    "selectedColor": "#06cd0f",
     "list": [
       {
         "pagePath": "pages/Campus/home/home",
@@ -35,13 +36,13 @@
         "selectedIconPath": "/assets/tabbar/kb-selected.png"
       },
       {
-        "pagePath": "pages/demo/demo",
+        "pagePath": "pages/Life/wall/wall",
         "text": "广大墙",
         "iconPath": "/assets/tabbar/wall.png",
         "selectedIconPath": "/assets/tabbar/wall-selected.png"
       },
       {
-        "pagePath": "pages/demo/test",
+        "pagePath": "pages/Setting/mine/mine",
         "text": "我的",
         "iconPath": "/assets/tabbar/mine.png",
         "selectedIconPath": "/assets/tabbar/mine-selected.png"

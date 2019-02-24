@@ -1,6 +1,6 @@
 <wxs src="module.wxs" module="tools" />
 <view wx:if='{{show}}' class='schedule'>
-  <image mode='widthFix' class='bg' src='/assets/kb_bg2.jpg'></image>
+  <image mode='widthFix' class='bg' src='/assets/kb_bg.jpg'></image>
   <!-- 日期栏 -->
   <view class='date-bar'>
     <view class='week' bindtap='resetWeek' style='color:{{week==schoolWeek?"":"red"}}'>
@@ -66,44 +66,44 @@
 
   <!-- 课程详情弹窗 -->
   <modal custom="true" show="{{showDetail}}" bind:cancel="cancelModal">
-    <swiper indicator-dots="{{detail.length>1?true:false}}" current="{{currentIndex}}" style='height:570rpx'>
-      <view wx:for="{{detail}}" wx:key="{{index}}">
-        <swiper-item>
-          <view class='course' style='background-color:{{colors[item.color]}}'>
-            <view>{{item.course_name}}</view>
+    <swiper bindchange="switchCourse" indicator-dots="{{detail.length>1?true:false}}" current="{{currentIndex}}" style='height:570rpx'>
+      <!-- <view wx:for="{{detail}}" wx:key="{{index}}"> -->
+      <swiper-item wx:for="{{detail}}" wx:key="{{index}}">
+        <view class='course' style='background-color:{{colors[item.color]}}'>
+          <view>{{item.course_name}}</view>
+        </view>
+        <view style='padding:10rpx'>
+          <view class='detail-item'>
+            <view class='key'>教室</view>
+            <view class='value'>{{item.class_place}}</view>
           </view>
-          <view style='padding:10rpx'>
-            <view class='detail-item'>
-              <view class='key'>教室</view>
-              <view class='value'>{{item.class_place}}</view>
-            </view>
-            <view class='detail-item'>
-              <view class='key'>周数</view>
-              <view class='value'>{{item.weeks}}</view>
-            </view>
-            <view class='detail-item'>
-              <view class='key'>节数</view>
-              <view class='value'>{{item.course_time}} {{item.which_day}}</view>
-            </view>
-            <view class='detail-item'>
-              <view class='key'>教师</view>
-              <view class='value'>{{item.teacher}}</view>
-            </view>
-            <view class='detail-item'>
-              <view class='key'>考核</view>
-              <view class='value'>{{item.check_type}}</view>
-            </view>
-            <view class='detail-item'>
-              <view class='key'>学分</view>
-              <view class='value'>{{item.credit}}</view>
-            </view>
+          <view class='detail-item'>
+            <view class='key'>周数</view>
+            <view class='value'>{{item.weeks}}</view>
           </view>
-        </swiper-item>
-      </view>
+          <view class='detail-item'>
+            <view class='key'>节数</view>
+            <view class='value'>{{item.course_time}} {{item.which_day}}</view>
+          </view>
+          <view class='detail-item'>
+            <view class='key'>教师</view>
+            <view class='value'>{{item.teacher}}</view>
+          </view>
+          <view class='detail-item'>
+            <view class='key'>考核</view>
+            <view class='value'>{{item.check_type}}</view>
+          </view>
+          <view class='detail-item'>
+            <view class='key'>学分</view>
+            <view class='value'>{{item.credit}}</view>
+          </view>
+        </view>
+      </swiper-item>
+      <!-- </view> -->
     </swiper>
     <view class='operate'>
-      <image id="0" bindtap='navTo' src='/assets/edit.svg'></image>
-      <image id="1" bindtap='navTo' src='/assets/add.svg'></image>
+      <image id="0" bindtap='navTo' src='/assets/add.svg'></image>
+      <image id="1" bindtap='navTo' src='/assets/edit.svg'></image>
       <image id="2" bindtap='navTo' src='/assets/delete.svg'></image>
     </view>
   </modal>

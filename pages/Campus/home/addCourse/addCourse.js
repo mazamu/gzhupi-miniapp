@@ -123,9 +123,9 @@ Page({
 
       let courseItem = {
         "check_type": obj.check_type,
-        "class_last": class_last,
+        "last": class_last,
         "class_place": obj.class_place,
-        "class_start": class_start,
+        "start": class_start,
         "course_time": class_time,
         "color": Number(obj.color),
         "course_id": "add",

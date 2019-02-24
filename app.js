@@ -6,6 +6,9 @@ App({
   },
 
   onLaunch: function(options) {
+    wx.showLoading({
+      title: '...tetete',
+    })
     console.log("App启动：", options)
     // 初始化知晓云
     wx.BaaS = requirePlugin('sdkPlugin')

@@ -60,6 +60,6 @@
 </view>
 
 <view class='foot'>
-  <view>* 长按 课表小格子 可以删除课程</view>
+  <!-- <view>* 长按 课表小格子 可以删除课程</view> -->
   <view>* 添加课程后 切换All周 可查看全部课程</view>
 </view>

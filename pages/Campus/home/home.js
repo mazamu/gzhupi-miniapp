@@ -10,6 +10,7 @@ Page({
   },
 
   onLoad: function(options) {
+
     // 选择出当天星期几的课程，包括非本周的
     let weekday = new Date().getDay()
     let kbList = wx.getStorageSync("course").course_list
@@ -43,6 +44,9 @@ Page({
 
   onShow: function() {
 
+  },
+  onReady(){
+    wx.hideLoading()
   },
 
 
