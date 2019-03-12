@@ -1,3 +1,18 @@
+.menu {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.menu.show {
+  width: 70rpx;
+  height: 70rpx;
+}
+
+.dawer {
+  background: white;
+  height: 200px;
+}
+
 /* 悬浮图标 */
 
 .float-icon {
@@ -16,21 +31,24 @@
 @-webkit-keyframes rotate {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
+
 @keyframes rotate {
   from {
     -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
+
   to {
     -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

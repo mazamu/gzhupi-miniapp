@@ -1,3 +1,4 @@
+var publicData = require("../../../../../utils/public_data.js")
 Component({
 
   properties: {
@@ -15,7 +16,7 @@ Component({
   },
 
   data: {
-    colors: ["#86b0fe", "#71eb55", "#f7c156", "#76e9eb", "#ff9dd8", "#80f8e6", "#eaa5f7", "#86b3a5", "#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#29ab97", "#61BC69", "#12AEF3", "#E29AAD", "#AFD7A4", "#F1BBB9", "#A0A8AE", "#AD918C"],
+    colors: publicData.colors
   },
 
   methods: {

@@ -46,7 +46,8 @@ function setWeekDate(intervalWeeks = 0) {
   const week = [];
   for (let i = 0; i < 7; i++) {
     let Stamp = new Date();
-    let num = intervalWeeks * 7 - Stamp.getDay() + 1 + i;
+    let weekday = Stamp.getDay() == 0 ? 7 : Stamp.getDay() //周日设置值为7
+    let num = intervalWeeks * 7 - weekday + 1 + i;
     Stamp.setDate(Stamp.getDate() + num);
     // week[i] = (Stamp.getMonth() + 1) + '月' + Stamp.getDate() + '日';
     week[i] = Stamp.getDate()

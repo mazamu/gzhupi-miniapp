@@ -24,11 +24,6 @@ Component({
       type: Boolean,
       value: false
     },
-    // 隐藏Logo
-    hideLogo: {
-      type: Boolean,
-      value: true
-    },
 
     // 隐藏返回按键
     hideBackBtn: {

@@ -4,9 +4,9 @@
     "cell": "/pages/Campus/home/components/courseCell/courseCell",
     "schedule": "/pages/Campus/home/components/schedule/schedule",
     "modal": "/pages/Components/modal",
-
     "app": "/pages/Campus/home/components/units/appNav",
     "day": "/pages/Campus/home/components/units/dayCourse",
-    "grade": "/pages/Campus/home/components/units/grade"
+    "grade": "/pages/Campus/home/components/units/grade",
+    "drawer-modal": "/pages/Components/drawer-modal"
   }
 }

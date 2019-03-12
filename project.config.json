@@ -38,7 +38,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": 0,
@@ -50,6 +50,13 @@
 						"appId": "wxefbf441f2537051b",
 						"extraData": "{\"username\":\"***REMOVED***\",\"password\":\"025453\"}"
 					}
+				},
+				{
+					"id": 1,
+					"name": "update",
+					"pathName": "pages/Campus/home/home",
+					"query": "",
+					"scene": null
 				}
 			]
 		}

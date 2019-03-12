@@ -1,6 +1,8 @@
 {
   "pages": [
+
     "pages/Campus/home/home",
+    "pages/Setting/about/about",
     "pages/Setting/login/bindStudent",
     "pages/Campus/home/addCourse/addCourse",
     "pages/Campus/grade/grade",

@@ -7,27 +7,19 @@ Page({
     navColor: "rgba(221, 221, 221, 0.7)",
     schedule: true,
     out: "ami",
+    showDrawer: false
   },
 
   onLoad: function(options) {
 
-    // 选择出当天星期几的课程，包括非本周的
-    let weekday = new Date().getDay()
-    let kbList = wx.getStorageSync("course").course_list
-    let todayCourse = []
-    if (kbList) {
-      kbList.forEach(function (item) {
-        if (item.weekday == weekday) {
-          todayCourse.push(item)
-        }
-      })
-    }
-    // this.setData({
-    //   todayCourse: todayCourse
-    // })
+
+  },
+  onShareAppMessage: function() {
+
   },
 
-  tap() {
+  // 切换课表模式
+  switchModel() {
     if (this.data.schedule) {
       this.setData({
         schedule: !this.data.schedule,
@@ -42,15 +34,16 @@ Page({
 
   },
 
-  onShow: function() {
-
+  // 打开抽屉弹窗
+  openDrawer() {
+    this.setData({
+      showDrawer: true
+    })
   },
-  onReady(){
-    wx.hideLoading()
-  },
 
 
-  onShareAppMessage: function() {
 
-  }
+
+
+
 })
