@@ -1,7 +1,7 @@
 {
   "pages": [
-
     "pages/Campus/home/home",
+    "pages/Campus/exp/exp",
     "pages/Setting/about/about",
     "pages/Setting/login/bindStudent",
     "pages/Campus/home/addCourse/addCourse",

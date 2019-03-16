@@ -1,12 +1,6 @@
 <navBar title="广大课表" titleColor="" hideTitle="{{true}}" navColor="{{navColor}}" hideBackBtn="{{true}}">
-  <image bindtap="openDrawer" class='menu {{showDrawer==true?"show":""}}' src='/assets/menu.svg'></image>
-
+  <image bindtap="openDrawer" class='menu {{showDrawer==true?"show":""}}' src='/assets/setting.svg'></image>
 </navBar>
-
-<!-- 抽屉弹窗 -->
-<drawer-modal show='{{showDrawer}}'>
-<view catchtap class='dawer'>454544545</view>
-</drawer-modal>
 
 
 <!-- 悬浮图标 -->
@@ -19,7 +13,7 @@
 
 
 <!-- 课表模式 -->
-<schedule show="{{schedule}}"></schedule>
+<schedule id='schedule' show="{{schedule}}"></schedule>
 
 <view hidden="{{schedule}}" class='{{out}}'>
 
@@ -35,3 +29,50 @@
   <view class='divide-line'></view>
 
 </view>
+
+
+<!-- 抽屉弹窗 -->
+<drawer-modal show='{{showDrawer}}'>
+  <view catchtap class='dawer'>
+    <view class='avator'>
+      <open-data type="userAvatarUrl" class='img'></open-data>
+      <open-data type="userNickName" class="nickname"></open-data>
+    </view>
+
+
+      <view class='item' bindtap='changeBg'>
+        <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/theme.svg'></image>
+        <view>更换背景</view>
+        <image src='{{arrowUrl}}'></image>
+      </view>
+      <view class='flod {{test==true?"show":""}}'>dtgsd</view>
+
+    <view class='item'>
+      <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/switch.svg'></image>
+      <view>启动模式</view>
+      <image src='{{arrowUrl}}'></image>
+    </view>
+    <view class='item'>
+      <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/update.svg'></image>
+      <view>同步中心</view>
+      <image src='{{arrowUrl}}'></image>
+    </view>
+    <view class='item'>
+      <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/kefu.svg'></image>
+      <view>建议反馈</view>
+      <image src='{{arrowUrl}}'></image>
+    </view>
+    <view class='item'>
+      <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/help.svg'></image>
+      <view>使用帮助</view>
+      <image src='{{arrowUrl}}'></image>
+    </view>
+    <view class='item'>
+      <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/about.svg'></image>
+      <view>关于课表</view>
+      <image src='{{arrowUrl}}'></image>
+    </view>
+
+
+  </view>
+</drawer-modal>

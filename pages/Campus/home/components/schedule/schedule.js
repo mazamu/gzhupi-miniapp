@@ -1,5 +1,6 @@
 var utils = require("../../../../../utils/utils.js")
-var publicData = require("../../../../../utils/public_data.js")
+var Data = require("../../../../../utils/data.js")
+var Config = require("../../../../../utils/config.js")
 Component({
 
   properties: {
@@ -18,14 +19,16 @@ Component({
     week: utils.getSchoolWeek(), //周数
     schoolWeek: utils.getSchoolWeek(), //校历周
     weekDate: utils.setWeekDate(), //一周日期
+    bg: Config.get("schedule_bg"), // 获取背景
 
-    weekDays: publicData.weekDays,
-    timeLine: publicData.timeLine,
-    colors: publicData.colors,
-    kbList: publicData.course_sample
+    weekDays: Data.weekDays,
+    timeLine: Data.timeLine,
+    colors: Data.colors,
+    kbList: Data.course_sample
   },
 
   methods: {
+
     // 恢复校历周
     resetWeek() {
       let week = utils.getSchoolWeek()
@@ -163,6 +166,13 @@ Component({
         }
       })
     },
+
+    // 外部更新视图使用
+    update() {
+      this.setData({
+        bg: Config.get("schedule_bg")
+      })
+    }
   },
 
   lifetimes: {
@@ -178,7 +188,6 @@ Component({
     },
 
     ready: function() {
-
     }
   },
 

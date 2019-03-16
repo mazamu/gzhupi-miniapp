@@ -1,6 +1,6 @@
 <wxs src="module.wxs" module="tools" />
 <view wx:if='{{show}}' class='schedule'>
-  <image mode='widthFix' class='bg' src='/assets/kb_bg.jpg'></image>
+  <image mode='widthFix' class='bg' src='{{bg.length>7?bg:""}}' style="background:{{bg.length<=7?bg:''}}"></image>
   <!-- 日期栏 -->
   <view class='date-bar'>
     <view class='week' bindtap='resetWeek' style='color:{{week==schoolWeek?"":"red"}}'>
