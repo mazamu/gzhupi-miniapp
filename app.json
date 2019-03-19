@@ -9,7 +9,8 @@
     "pages/Campus/tools/calendar",
     "pages/Life/wall/wall",
     "pages/Setting/mine/mine",
-    "pages/Campus/evaluation/evaluation"
+    "pages/Campus/evaluation/evaluation",
+    "pages/Setting/login/sync"
   ],
   "window": {
     "backgroundTextStyle": "light",

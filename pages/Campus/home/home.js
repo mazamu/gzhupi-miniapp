@@ -3,28 +3,32 @@ var Config = require("../../../utils/config.js")
 var Setting = require("../../../utils/setting.js")
 
 Page({
-
   data: {
-    navColor: "rgba(221, 221, 221, 0.7)",
-    schedule: true,
+    schedule: Config.get("schedule_mode") == "week" ? true : false,
+    navColor: Config.get("schedule_mode") == "week" ? "rgba(221, 221, 221, 0.7)" : "",
     out: "ami",
-    showDrawer: true,
-    arrowUrl: "cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/right-arrow.svg"
+    showDrawer: false,
+    arrowUrl: "cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/right-arrow.svg",
   },
 
   onLoad: function(options) {
-
+    wx.showLoading({
+      title: 'Loading...',
+    })
   },
   onShareAppMessage: function() {
 
   },
-  
-  // 切换课表模式
+  onReady() {
+    wx.hideLoading()
+  },
+
+  // 切换课表模式，点解悬浮图标
   switchModel() {
     if (this.data.schedule) {
       this.setData({
         schedule: !this.data.schedule,
-        navColor: "white",
+        navColor: "",
       })
     } else {
       this.setData({
@@ -42,29 +46,56 @@ Page({
     })
   },
 
-  // 更换背景
-  changeBg() {
-    if (this.data.test) {
-      this.setData({
-        test: false
-      })
-    } else {
-      this.setData({
-        test: true
-      })
+  // 抽屉选项
+  tapDrawer(e) {
+    let drawerItem = e.currentTarget.id
+    const schedule = this.selectComponent('#schedule')
+    switch (drawerItem) {
+      case "changeBg":
+      case "changeMode":
+        this.setData({
+          drawerItem: drawerItem == this.data.drawerItem ? null : drawerItem,
+          checkedBlur: Config.get("blur"),
+          mode: Config.get("schedule_mode")
+        })
+        break
+      case "selectImg":
+        Setting.setBg().then(res => {
+          Config.set("schedule_bg", res)
+          schedule.updateBg()
+        })
+        break
+      case "white,white":
+      case "#ddd,#ddd":
+      case "#d299c2,#fef9d7":
+      case "#a8edea,#fed6e3":
+        Config.set("schedule_bg", drawerItem)
+        schedule.updateBg()
+        break
+      case "navToAbout":
+        wx.navigateTo({
+          url: '/pages/Setting/about/about',
+        })
     }
-    // const schedule = this.selectComponent('#schedule');
-    // Setting.setBg().then(res => {
-    //   Config.set("schedule_bg", res)
-    //   schedule.update()
-    // })
+  },
 
+  // 开启关闭高斯模糊
+  switchChange(e) {
+    if (e.detail.value) Config.set("blur", 8)
+    else Config.set("blur", 0)
+    const schedule = this.selectComponent('#schedule')
+    schedule.updateBg()
+  },
 
-  }
+  // 切换课表模式
+  radioChange(e) {
+    Config.set("schedule_mode", e.detail.value)
 
-
-
-
+    if (e.detail.value == "day") this.data.schedule = true
+    else this.data.schedule = false
+    this.switchModel()
+  },
+  catchtap(e) {},
 
 
 })

@@ -1,10 +1,11 @@
 var config = {
-  load_mode: "day", //启动模式 day/week
+  configData: "20190316",
+  schedule_mode: "day", //启动模式 day/week
   showExp: false, //是否展示实验课
   version: "0.6.0.20190313", //版本号
   bindStatus: wx.getStorageSync("account") == "" ? false : true, //学号绑定
-  schedule_bg: "/assets/kb_bg.jpg", //课表背景图片
-  blur: 10, //高斯模糊
+  schedule_bg: "#a8edea,#fed6e3", //课表背景图片/颜色
+  blur: 8, //高斯模糊
   tips: {
     time_line: false, //时间轴
     help: false, //帮助
@@ -25,6 +26,15 @@ function init() {
         data: config,
       })
     }
+  })
+}
+
+
+// 重新生成config加入缓存
+function reInit() {
+  wx.setStorage({
+    key: 'config',
+    data: config,
   })
 }
 
@@ -50,6 +60,7 @@ function set(name, value) {
 module.exports = {
   config: config,
   init: init,
+  reInit: reInit,
   get: get,
   set: set
 }

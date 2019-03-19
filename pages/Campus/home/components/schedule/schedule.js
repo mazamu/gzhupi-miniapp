@@ -1,8 +1,8 @@
 var utils = require("../../../../../utils/utils.js")
 var Data = require("../../../../../utils/data.js")
 var Config = require("../../../../../utils/config.js")
+var showTimes = 0
 Component({
-
   properties: {
     show: {
       type: Boolean,
@@ -20,6 +20,7 @@ Component({
     schoolWeek: utils.getSchoolWeek(), //校历周
     weekDate: utils.setWeekDate(), //一周日期
     bg: Config.get("schedule_bg"), // 获取背景
+    blur: Config.get("blur"), //高斯模糊
 
     weekDays: Data.weekDays,
     timeLine: Data.timeLine,
@@ -167,11 +168,27 @@ Component({
       })
     },
 
-    // 外部更新视图使用
-    update() {
+    // 更新背景视图使用
+    updateBg() {
       this.setData({
-        bg: Config.get("schedule_bg")
+        bg: Config.get("schedule_bg"),
+        blur: Config.get("blur"),
       })
+    },
+    viewUpdate() {
+      let course = wx.getStorageSync('course')
+      let exp = wx.getStorageSync('exp')
+      if (course != "" || exp != "") {
+        let kbList = course.course_list
+        if (Config.get("showExp")) {
+          kbList = kbList.concat(exp)
+
+        }
+        this.setData({
+          kbList: kbList,
+          sjkList: wx.getStorageSync('course').sjk_course_list
+        })
+      }
     }
   },
 
@@ -179,17 +196,22 @@ Component({
     created: function() {},
 
     attached: function() {
-      if (wx.getStorageSync('course') != "") {
-        this.setData({
-          kbList: wx.getStorageSync('course').course_list,
-          sjkList: wx.getStorageSync('course').sjk_course_list
-        })
-      }
+      this.viewUpdate()
     },
 
-    ready: function() {
-    }
+    ready: function() {}
   },
 
+  pageLifetimes: {
+    show() {
+      // 初次onshow不执行
+      if (showTimes) {
+        this.viewUpdate()
+        console.log(showTimes)
+      }
+      showTimes++
+
+    }
+  }
 
 })

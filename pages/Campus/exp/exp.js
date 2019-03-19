@@ -1,4 +1,4 @@
-var request = require("../../../utils/request.js")
+var Request = require("../../../utils/request.js")
 var Data = require("../../../utils/data.js")
 var Config = require("../../../utils/config.js")
 var Setting = require("../../../utils/setting.js")
@@ -17,52 +17,18 @@ Page({
    */
   onLoad: function(options) {
 
-    Setting.setBg().then(res=>{
-      console.log(res)
-      this.setData({
-        src:res
-      })
-    })
-    
-    // function getSomething() {
-    //   var r = 0;
-    //   return new Promise(function(resolve) {
-    //     wx.getStorage({
-    //       key: 'account',
-    //       success: function(res) {
-    //         resolve(res)
-    //       },
-    //     })
-    //   });
-    // }
+    if (wx.getStorageSync("exp") == "") {
+      Request.sync("1865400006", "liujiahe520", "exp", "exp_account").then(
+        
+      )
+    }
 
-    // function compute(x) {
-    //   // console.log(x);
-    // }
-    // getSomething().then(compute);
   },
 
   onShow: function() {
     this.setData({
       exp: wx.getStorageSync("exp"),
     })
-
-
-    // wx.getSavedFileList({
-    //   success(res) {
-    //     for  (let i=0;i<res.fileList.length;i++) {
-    //       wx.removeSavedFile({
-    //         filePath: res.fileList[i].filePath,
-    //         complete(res) {
-    //           console.log(res)
-    //         }
-    //       })
-    //     }
-    //   }
-    // })
-    // Config.initConfig()
-    // Config.setConfig("test", 123)
-    // console.log(Config.getConfig("test"))
   },
 
   switchChange(e) {

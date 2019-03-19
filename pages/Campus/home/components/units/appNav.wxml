@@ -22,7 +22,7 @@
   <view class='nav-item'>
     <view id='4' bindtap='navigate' style='flex:1'>考试</view>
     <view id='5' bindtap='navigate' style='flex:1'>课评</view>
-    <view id='6' bindtap='navigate' style='flex:1'>切换</view>
+    <view id='6' bindtap='navigate' style='flex:1'>实验课</view>
     <view id='7' bindtap='navigate' style='flex:1'>更多</view>
   </view>
 </view>

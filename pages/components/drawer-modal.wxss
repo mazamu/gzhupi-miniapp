@@ -28,7 +28,6 @@
 }
 
 .modal-content.show {
-
   transform: translateX(0%);
 }
 
