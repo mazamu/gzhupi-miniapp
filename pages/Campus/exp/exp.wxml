@@ -2,7 +2,7 @@
 
 <view class='op'>
   <view class='item'>
-    <button type='primary'>
+    <button type='primary' bindtap='navToSync'>
       <image src='cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/update.svg'></image>
       <view>同步中心</view>
     </button>
@@ -18,7 +18,7 @@
 <!-- 实验列表 -->
 <view class='exp' wx:for="{{exp}}" wx:key="{{index}}">
 
-  <view class='left' style='background:{{colors[index]}}'>
+  <view class='left' style='background:{{item.color==0?"lightgrey":colors[index]}}'>
     <view>{{item.weeks}}</view>
     <view style='font-size:80%'>{{item.teacher}}</view>
   </view>
@@ -30,7 +30,7 @@
     <view class='time'>
       <view style=''>{{item.which_day}}</view>
       <view>{{item.course_time}}</view>
-      <!-- <view>2019-05-12</view> -->
+      <view>{{item.date}}</view>
     </view>
   </view>
 

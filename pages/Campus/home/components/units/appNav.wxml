@@ -16,7 +16,7 @@
   <view class='nav-item'>
     <image id='4' bindtap='navigate' style='width:100rpx;opacity:0.4' mode='widthFix' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1gEtLYqwE75THYVk.png'></image>
     <image id='5' bindtap='navigate' style='width:100rpx;opacity:0.4' mode='widthFix' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1gEtLYHFBZNatsdj.png'></image>
-    <image id='6' bindtap='navigate' style='width:100rpx;opacity:0.4' mode='widthFix' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g7MZLfmddGHEsXc.png'></image>
+    <image id='6' bindtap='navigate' style='width:100rpx' mode='widthFix' src='/assets/exp.svg'></image>
     <image id='7' bindtap='navigate' style='width:100rpx' mode='widthFix' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1gFbUKevMhpQyrqR.png'></image>
   </view>
   <view class='nav-item'>

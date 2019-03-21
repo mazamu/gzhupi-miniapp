@@ -179,14 +179,13 @@ Component({
       let course = wx.getStorageSync('course')
       let exp = wx.getStorageSync('exp')
       if (course != "" || exp != "") {
-        let kbList = course.course_list
+        let kbList = course == "" ? [] : course.course_list
         if (Config.get("showExp")) {
           kbList = kbList.concat(exp)
-
         }
         this.setData({
           kbList: kbList,
-          sjkList: wx.getStorageSync('course').sjk_course_list
+          sjkList: course == "" ? [] : course.sjk_course_list
         })
       }
     }
@@ -199,7 +198,8 @@ Component({
       this.viewUpdate()
     },
 
-    ready: function() {}
+    ready: function() {
+    }
   },
 
   pageLifetimes: {
@@ -207,7 +207,6 @@ Component({
       // 初次onshow不执行
       if (showTimes) {
         this.viewUpdate()
-        console.log(showTimes)
       }
       showTimes++
 

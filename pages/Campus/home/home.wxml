@@ -5,7 +5,11 @@
 
 <!-- 悬浮图标 -->
 <view>
-  <image bindtap='switchModel' class='float-icon' mode='aspectFit' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1fx04mwWmqxrOljX.png'></image>
+  <form bindsubmit='formSubmit' report-submit='{{true}}'>
+    <button formType="submit">
+      <image bindtap='switchModel' class='float-icon' mode='aspectFit' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1fx04mwWmqxrOljX.png'></image>
+    </button>
+  </form>
   <button open-type="share">
     <image class='share-icon' mode='aspectFit' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g3viOkNmZOlcqSF.png'></image>
   </button>

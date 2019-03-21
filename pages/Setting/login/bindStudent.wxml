@@ -13,7 +13,7 @@
     <view style='font-weight:bold; text-shadow: 5rpx 25rpx 10rpx #ddd;font-size:150%'>教务系统登录</view>
 
     <view class='login-form'>
-      <form bindsubmit='formSubmit'>
+      <form bindsubmit='formSubmit' report-submit='{{true}}'>
         <view>
           <view class='form-item'>
             <input class='input-content' name="username" type='number' maxlength='10' placeholder="Username" cursor-spacing="120" />

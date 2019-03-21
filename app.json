@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/Campus/home/home",
+    "pages/Setting/login/sync",
     "pages/Campus/exp/exp",
     "pages/Setting/about/about",
     "pages/Setting/login/bindStudent",
@@ -9,8 +10,7 @@
     "pages/Campus/tools/calendar",
     "pages/Life/wall/wall",
     "pages/Setting/mine/mine",
-    "pages/Campus/evaluation/evaluation",
-    "pages/Setting/login/sync"
+    "pages/Campus/evaluation/evaluation"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -21,7 +21,7 @@
   },
   "plugins": {
     "sdkPlugin": {
-      "version": "1.16.0",
+      "version": "2.0.2",
       "provider": "wxc6b86e382a1e3294"
     },
     "brickLayout": {

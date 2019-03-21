@@ -22,7 +22,10 @@ Page({
   onReady() {
     wx.hideLoading()
   },
-
+  
+  formSubmit(e) {
+    wx.BaaS.wxReportTicket(e.detail.formId)
+  },
   // 切换课表模式，点解悬浮图标
   switchModel() {
     if (this.data.schedule) {
@@ -75,6 +78,11 @@ Page({
       case "navToAbout":
         wx.navigateTo({
           url: '/pages/Setting/about/about',
+        })
+        break
+      case "navToSync":
+        wx.navigateTo({
+          url: "/pages/Setting/login/sync",
         })
     }
   },

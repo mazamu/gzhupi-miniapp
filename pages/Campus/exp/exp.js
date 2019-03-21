@@ -1,33 +1,27 @@
-var Request = require("../../../utils/request.js")
+var Utils = require("../../../utils/utils.js")
 var Data = require("../../../utils/data.js")
 var Config = require("../../../utils/config.js")
 var Setting = require("../../../utils/setting.js")
 Page({
 
-  /**
-   * 页面的初始数据
-   */
+
   data: {
     colors: Data.colors,
-    checked: Config.get("showExp")
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function(options) {
 
-    if (wx.getStorageSync("exp") == "") {
-      Request.sync("1865400006", "liujiahe520", "exp", "exp_account").then(
-        
-      )
-    }
-
-  },
-
+  onLoad: function(options) {},
+  onShareAppMessage: function() {},
   onShow: function() {
     this.setData({
-      exp: wx.getStorageSync("exp"),
+      exp: this.reSort(),
+      checked: Config.get("showExp")
+    })
+  },
+
+  navToSync() {
+    wx.navigateTo({
+      url: "/pages/Setting/login/sync?id=0",
     })
   },
 
@@ -63,5 +57,22 @@ Page({
     })
   },
 
-  onShareAppMessage: function() {}
+  // 课程重新排序
+  reSort() {
+    let exp = wx.getStorageSync("exp")
+    if (exp == "") return ""
+
+    let time = new Date()
+    time = Utils.formatTime(time).split(" ")[0]
+
+    for (let i = 0; i < exp.length; i++) {
+      if (time > exp[0].date) {
+        let tmp = exp.splice(0, 1)[0]
+        tmp.color = 0
+        exp = exp.concat(tmp)
+      }
+    }
+    return exp
+  }
+
 })

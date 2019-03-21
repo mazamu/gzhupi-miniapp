@@ -31,7 +31,7 @@ Page({
 onShow(){
   let that = this
   var time = new Date()
-  if (time.getHours() >= 0 && time.getHours() < 6) {
+  if (time.getHours() >= 0 && time.getHours() < 7) {
     this.setData({
       hideSyncTip: false
     })
@@ -78,6 +78,8 @@ onShow(){
 
   // 提交登录表单
   formSubmit(e) {
+    // 上报formId
+    wx.BaaS.wxReportTicket(e.detail.formId)
     let account = {
       username: e.detail.value.username,
       password: e.detail.value.password
