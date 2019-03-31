@@ -48,6 +48,9 @@ Page({
       success: function(res) {
         if (res.confirm) {
           Config.set("showExp", true)
+          that.setData({
+            checked: true
+          })
         } else {
           that.setData({
             checked: false
@@ -60,7 +63,7 @@ Page({
   // 课程重新排序
   reSort() {
     let exp = wx.getStorageSync("exp")
-    if (exp == "") return ""
+    if (exp == "") return exp
 
     let time = new Date()
     time = Utils.formatTime(time).split(" ")[0]
@@ -72,6 +75,7 @@ Page({
         exp = exp.concat(tmp)
       }
     }
+
     return exp
   }
 

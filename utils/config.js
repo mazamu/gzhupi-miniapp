@@ -17,16 +17,8 @@ var config = {
 
 // 生成config加入缓存
 function init() {
-  wx.getStorage({
-    key: 'config',
-    success: function(res) {},
-    fail: function() {
-      wx.setStorage({
-        key: 'config',
-        data: config,
-      })
-    }
-  })
+  let conf = wx.getStorageSync("config")
+  if (conf == "") wx.setStorageSync('config', config)
 }
 
 

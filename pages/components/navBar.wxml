@@ -23,4 +23,4 @@
 </view>
 
 <!-- 导航栏空白占位 -->
-<view style='height:{{navBarHeight}}px'></view>
+<view hidden='{{!occupy}}' style='height:{{navBarHeight}}px'></view>
