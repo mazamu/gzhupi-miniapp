@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/Campus/library/search",
-    "pages/Campus/library/detail",
-    "pages/Campus/library/list",
     "pages/Campus/home/home",
+    "pages/Campus/library/search",
+    "pages/Campus/library/list",
+    "pages/Campus/library/detail",
     "pages/Setting/login/sync",
     "pages/Campus/exp/exp",
     "pages/Setting/about/about",
@@ -14,7 +14,8 @@
     "pages/Life/wall/wall",
     "pages/Setting/mine/mine",
     "pages/Campus/evaluation/evaluation",
-    "pages/Campus/library/sub/overview"
+    "pages/Campus/library/sub/overall",
+    "pages/Campus/library/sub/visit"
   ],
   "window": {
     "backgroundTextStyle": "light",

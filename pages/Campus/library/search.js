@@ -7,15 +7,15 @@ Page({
   },
 
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     let that = this
     wx.request({
-      url: 'https://myapi.iego.net:5000/library',
+      url: 'https://1171058535813521.cn-shanghai.fc.aliyuncs.com/2016-08-15/proxy/GZHU-API/Spider/library/visit',
       method: "GET",
-      success: function(res) {
-        // console.log("图书馆信息", res.data)
+      success: function (res) {
+        // console.log("图书馆", res.data)
         that.setData({
-          lib: res.data
+          lib: res.data.data
         })
       }
     })
@@ -35,13 +35,14 @@ Page({
       url: "/pages/Campus/library/list?query=" + query,
     })
   },
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
 
-  nav(){
+  nav(e) {
+    if (e.currentTarget.id == "") return
     wx.navigateTo({
-      url: '/pages/Campus/library/sub/overview',
+      url: '/pages/Campus/library/sub/' + e.currentTarget.id,
     })
   }
 })

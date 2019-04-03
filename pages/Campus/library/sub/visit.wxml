@@ -1,0 +1,31 @@
+<navBar title="进馆数据"></navBar>
+<view style='text-align:center;color:red'>接口已失效...</view>
+<view class='page'>
+  <!-- 图书馆数据 -->
+  <view class="module">
+    <view class="module-bar">
+      <view class="module-icon">
+        <image style='width:75rpx' mode='widthFix' src='https://cloud-minapp-17768.cloud.ifanrusercontent.com/1g0eqSYWkdJOBqfD.png'></image>
+      </view>
+      <view class='module-text'>
+        <view> </view> 今日进馆:
+        <text style='color:red'>{{lib.total}}</text>人次
+        <view> </view>
+      </view>
+    </view>
+    <view class='table-head'>
+      <view style='flex:4'>学院</view>
+      <view style='flex:1'>人数</view>
+      <view style='flex:1'>人次</view>
+      <view style='flex:1'>平均</view>
+    </view>
+    <view class='table-body' wx:for="{{lib.college_list}}" wx:key="{{index}}">
+      <view style='flex:4'>{{item[0]}}</view>
+      <view style='flex:1'>{{item[1]}}</view>
+      <view style='flex:1'>{{item[2]}}</view>
+      <view style='flex:1;color:brown'>{{item[3]}}</view>
+    </view>
+    <text style='color:gray;font-size:80%;padding:10rpx'>更新于 {{lib.update_time}}</text>
+  </view>
+
+</view>
