@@ -1,4 +1,4 @@
-// pages/Campus/library/sub/overall.js
+// pages/Campus/gzhu/index.js
 Page({
 
   /**

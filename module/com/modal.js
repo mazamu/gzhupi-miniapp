@@ -62,9 +62,7 @@ Component({
     },
 
     confirm() {
-      this.setData({
-        show: false
-      })
+
       this.triggerEvent('confirm')
     }
   }

@@ -1,13 +1,17 @@
 // pages/Components/drawer-modal.js
 Component({
-  /**
-   * 组件的属性列表
-   */
+  options: {
+    multipleSlots: true // 在组件定义时的选项中启用多slot支持
+  },
   properties: {
     show: {
       type: Boolean,
       value: false
     },
+    mode: {
+      type: String,
+      value: "left"
+    }
   },
 
   data: {
@@ -20,6 +24,13 @@ Component({
         show: false
       })
     },
+
+    confirm() {
+      this.setData({
+        show: false
+      })
+      this.triggerEvent('confirm')
+    }
 
   },
 

@@ -10,16 +10,19 @@
 		"minified": true,
 		"newFeature": true,
 		"autoAudits": false,
-		"uglifyFileName": true
+		"uglifyFileName": true,
+		"checkInvalidKey": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.5.0",
+	"libVersion": "2.4.0",
 	"appid": "wxe194e8a8d4601dae",
 	"projectname": "GZHU%20Pi",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
@@ -38,11 +41,11 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
-					"name": "1007",
+					"name": "课表迁移",
 					"pathName": "pages/Campus/home/home",
 					"query": "",
 					"scene": 1037,
@@ -56,6 +59,27 @@
 					"name": "update",
 					"pathName": "pages/Campus/home/home",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "二维码",
+					"pathName": "pages/Campus/home/home",
+					"query": "",
+					"scene": 1047
+				},
+				{
+					"id": -1,
+					"name": "分包",
+					"pathName": "module/vote/vote",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 4,
+					"name": "子页面",
+					"pathName": "pages/Campus/library/sub/tools",
+					"query": "id=favorite",
 					"scene": null
 				}
 			]

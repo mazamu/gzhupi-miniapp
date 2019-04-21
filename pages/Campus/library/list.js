@@ -1,7 +1,7 @@
 Page({
 
   data: {
-    noCover: "cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/book.svg",
+    noCover: "https://cos.ifeel.vip/gzhu-pi/images/icon/book.svg",
     page: 1,
     pages: 1,
     books: []
@@ -15,6 +15,15 @@ Page({
   },
 
   formSubmit(e) {
+    var time = new Date()
+    if (time.getHours() >= 0 && time.getHours() < 7) {
+      wx.showToast({
+        title: '当前时间段不可用~',
+        icon: "none"
+      })
+      return
+    }
+
     let query = e.detail.value.query
     if (query == "") {
       wx.showToast({

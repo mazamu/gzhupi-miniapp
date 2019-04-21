@@ -7,8 +7,9 @@ Page({
     schedule: Config.get("schedule_mode") == "week" ? true : false,
     navColor: Config.get("schedule_mode") == "week" ? "rgba(221, 221, 221, 0.7)" : "",
     out: "ami",
+    showUpdate: false,
     showDrawer: false,
-    arrowUrl: "cloud://gzhu-pi-f63be3.677a-gzhu-pi-f63be3/images/icon/right-arrow.svg",
+    arrowUrl: "https://cos.ifeel.vip/gzhu-pi/images/icon/right-arrow.svg",
   },
 
   onLoad: function(options) {
@@ -21,9 +22,21 @@ Page({
   },
   onReady() {
     wx.hideLoading()
+    this.updateCheck()
+  },
+
+  updateCheck(){
+    let version=Config.get("version")
+    if(version <"0.8.7.20190418"){
+      this.setData({
+        showUpdate:true
+      })
+      Config.set("version","0.8.7.20190418")
+    }
   },
   
   formSubmit(e) {
+    console.log(e)
     wx.BaaS.wxReportTicket(e.detail.formId)
   },
   // 切换课表模式，点解悬浮图标
