@@ -1,5 +1,7 @@
+<navBar title="{{className}} 课表" titleColor=""  navColor="rgba(221, 221, 221, 0.7)" > </navBar>
+
 <wxs src="module.wxs" module="tools" />
-<view wx:if="{{show}}"  class='schedule'>
+<view   class='schedule'>
   <image mode='widthFix' class='bg' src='{{bg.length>15?bg:""}}' style="filter:blur({{blur}}px);background-image: linear-gradient(to top,{{bg.length<=15?bg:''}})"></image>
 
   <!-- 日期栏 -->
@@ -9,7 +11,7 @@
       <view>周</view>
     </view>
 
-    <view class="week-days" bindtap='courseSetting'>
+    <view class="week-days">
       <!-- 星期 -->
       <view class="weekday date-item">
         <view wx:for="{{weekDays}}" wx:key="{{index}}" style="width:100rpx;color:{{week==schoolWeek && today==weekDate[index]?'#3da7b3':''}}">周{{item}} </view>
@@ -101,9 +103,9 @@
       </swiper-item>
     </swiper>
     <view class='operate'>
-      <image id="0" bindtap='navTo' src='/assets/add.svg'></image>
+      <image id="0"  src='/assets/add.svg'></image>
       <image id="1" bindtap='navTo' src='/assets/edit.svg'></image>
-      <image id="2" bindtap='navTo' src='/assets/delete.svg'></image>
+      <image id="2"  src='/assets/delete.svg'></image>
     </view>
   </modal>
 
