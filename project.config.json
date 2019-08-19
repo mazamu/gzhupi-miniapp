@@ -26,7 +26,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.5.0",
 	"appid": "wxe194e8a8d4601dae",
-	"projectname": "GZHU%20Pi",
+	"projectname": "GZHU%20Pi2",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
@@ -49,6 +49,10 @@
 		},
 		"game": {
 			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
 			"list": []
 		},
 		"miniprogram": {
@@ -88,8 +92,8 @@
 				},
 				{
 					"id": 4,
-					"name": "pages/Campus/grade/rank",
-					"pathName": "pages/Campus/grade/rank",
+					"name": "pages/Life/oldthings/index",
+					"pathName": "pages/Life/oldthings/index",
 					"query": "",
 					"scene": null
 				}

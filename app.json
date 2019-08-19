@@ -21,7 +21,8 @@
     "pages/Campus/gzhu/admit",
     "pages/Campus/tools/lost",
     "pages/Setting/about/agreement",
-    "pages/Campus/grade/rank"
+    "pages/Campus/grade/rank",
+    "pages/Life/oldthings/index"
   ],
   "subpackages": [
     {

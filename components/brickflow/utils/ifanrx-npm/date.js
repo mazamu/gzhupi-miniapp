@@ -6,7 +6,7 @@ module.exports = {
    * @param  {Date} date
    * @returns {Object}
    */
-  standardizedDate: function (date) {
+  standardizedDate: function(date) {
     var stdDate = {},
       month = date.getMonth() + 1,
       day = date.getDate(),
@@ -28,7 +28,7 @@ module.exports = {
    * @param  {String} type
    * @returns {String}
    */
-  formatTime: function (date, type) {
+  formatTime: function(date, type) {
     var currentYear = new Date().getFullYear()
     var stdDate = this.standardizedDate(date)
     var result
@@ -60,7 +60,7 @@ module.exports = {
    * @param  {String} type
    * @return {String}
    */
-  formatTimestamp: function (stamp, type) {
+  formatTimestamp: function(stamp, type) {
     var date = new Date()
     date.setTime(parseInt(stamp, 10) * 1000)
     var stdDate = this.standardizedDate(date)
@@ -119,14 +119,14 @@ module.exports = {
   /**
    * 较多函数使用 formateTimestamp，向前兼容
    */
-  formateTimestamp: function (stamp, type) {
+  formateTimestamp: function(stamp, type) {
     return this.formatTimestamp(stamp, type)
   },
 
   /** 获取当前 Unix 时间戳
    * @returns {Number}
    */
-  getUnix: function () {
+  getUnix: function() {
     return Math.round(+new Date() / 1000)
   },
 
@@ -134,7 +134,7 @@ module.exports = {
    * 获取距离今天前一个星期的日期字对象，详细见(getLastWeekDate)
    * @returns {Object}
    */
-  getWeekDate: function () {
+  getWeekDate: function() {
     return this.getLastWeekDate(new Date())
   },
 
@@ -143,7 +143,7 @@ module.exports = {
    * @param  {Date} nowDate
    * @returns {Object}
    */
-  getLastWeekDate: function (nowDate) {
+  getLastWeekDate: function(nowDate) {
     var lastWeekStamp = nowDate.getTime() - 6 * 3600 * 24 * 1000
     var lastWeekDate = new Date()
     lastWeekDate.setTime(lastWeekStamp)
@@ -160,13 +160,13 @@ module.exports = {
    * @param  {Number} timestamp
    * @returns {Number} 返回 Unix 时间戳
    */
-  getStartUnixByUnix: function (timestamp) {
+  getStartUnixByUnix: function(timestamp) {
     var dateObj = new Date(parseInt(timestamp, 10) * 1000)
     var startDateObj = new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate())
     return startDateObj / 1000
   },
 
-  relativeTime: function (time) {
+  relativeTime: function(time) {
     var date
     if (typeof time === 'number') {
       date = new Date()
@@ -179,7 +179,7 @@ module.exports = {
     return this.dateToRelativeTime(date)
   },
 
-  relativetime: function (time) {
+  relativetime: function(time) {
     return this.relativeTime(time)
   },
 
@@ -188,7 +188,7 @@ module.exports = {
    * @param  {Date} date
    * @returns {String}
    */
-  dateToRelativeTime: function (date) {
+  dateToRelativeTime: function(date) {
     var DaySeconds = 86400 // const variable, 24 hours * 60 mins * 60 s
     var currentDate = new Date()
     var currentMonth = currentDate.getMonth()
@@ -231,7 +231,7 @@ module.exports = {
    * @param  {Number} timestamp
    * @returns {String}
    */
-  limeTime: function (timestamp) {
+  limeTime: function(timestamp) {
     return this.simplyToRelativeTime(timestamp)
   },
 
@@ -240,12 +240,12 @@ module.exports = {
    * @param  {Number} timestamp
    * @returns {String}
    */
-  simplyToRelativeTime: function (timestamp) {
+  simplyToRelativeTime: function(timestamp) {
     var currentUnixTime = Math.round(new Date().getTime() / 1000)
     var deltaSecond = currentUnixTime - parseInt(timestamp, 10)
     var result
     if (deltaSecond < 60) {
-      result = deltaSecond + ' 秒前'
+      result = '刚刚'
     } else if (deltaSecond < 3600) {
       result = Math.floor(deltaSecond / 60) + ' 分钟前'
     } else if (deltaSecond < 86400) {

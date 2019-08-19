@@ -1,0 +1,41 @@
+<template name="list-item-theme_oldthings">
+
+  <view wx:for="{{render_list}}" wx:key="{{item}}" class="list-item oldthings" id="card-{{item}}">
+    <view class="list-box list-box_album is-expand" style="background-color:{{content_list[item]._background}}" data-card-id="{{content_list[item].id}}" bindtap="onBrickItemTap">
+
+
+      <!-- 信息区 -->
+      <view class="base-info" catchtap="{{content_list[item].user.userId ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].user.userId}}">
+
+        <image class="avatar" src="{{content_list[item].user.avatar}}" mode="widthFix"></image>
+        <view class="title">
+          <view style="font-weight:bold" wx:if="{{content_list[item].user.username}}" class="user-name">物品标题</view>
+          <view style="color: var(--gray);font-size:80%;">{{content_list[item]._dateTime}}</view>
+        </view>
+        <view class="price">￥100</view>
+
+      </view>
+
+
+      <!-- 内容区 -->
+      <view class="content">
+        <view wx:if="{{content_list[item].title}}" class="desc-text">
+          物品描述啦啦
+        </view>
+
+        <template is="images-viewer" data="{{images:content_list[item].images,_imageFillMode}}"></template>
+
+        <view class="footer">
+          <view>#手表</view>
+          <!-- <view>浏览量</view> -->
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<template name="images-viewer">
+  <view wx:if="{{ !!images && !!images.length}}" class="media-previewer">
+    <image wx:for="{{ images }}" wx:key="{{images}}" class="pics size_{{images.length}}" src="{{item}}" mode="{{_imageFillMode}}" data-images="{{images}}" data-current-image="{{item}}" catchtap='_imagePreview'></image>
+  </view>
+</template>

@@ -1,0 +1,5 @@
+<navBar title="二手市场" navColor="rgba(255, 255, 255, 0.8)"></navBar>
+
+<view wx:if="{{dataSet.length>0}}">
+  <brickflow dataSet="{{dataSet}}" option="{{brick_option}}" bind:tapCard="tapCard" bind:tapLike="handleLike" bind:tapUser="handleUserEvent" bind:onCardExpanded="handleExpand" />
+</view>

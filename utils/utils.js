@@ -24,7 +24,8 @@ const formatNumber = n => {
 */
 function getSchoolWeek() {
   let schoolWeek
-  let startMonday = new Date(2019, 8, 26)
+  // 月份需要减一
+  let startMonday = new Date(2019, 7, 26)
   let today = new Date()
 
   let interval = today - startMonday

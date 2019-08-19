@@ -1,6 +1,6 @@
-import { utils } from './utils/utils'
-import config from './utils/config'
-import tpl from './tpl/tpl'
+import { utils } from './utils/utils.js'
+import config from './utils/config.js'
+import tpl from './tpl/tpl.js'
 
 const DEFAULT_HEIGHT = 182
 
@@ -13,7 +13,7 @@ Component({
     rawData: {}, // 源数据
     orderArr: [], // 记录原始数值
     renderList: [], // 记录用于渲染的数组排序
-    _tplName: 'album',
+    _tplName: 'oldthings',
     _defaultExpandStatus: false,
     _imageFillMode: 'widthFix', // 图片适配 mode
     _fontColor: 'black',
@@ -268,5 +268,12 @@ Component({
       let index = Math.floor(Math.random() * (colorSet.length - 1))
       return colorSet[index]
     }
-  }
+  },
+
+  // 生命周期方法
+  lifetimes: {
+    attached: function () {
+      // console.log(this.data)
+    }
+  },
 })
