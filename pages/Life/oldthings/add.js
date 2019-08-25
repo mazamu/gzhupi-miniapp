@@ -9,6 +9,14 @@ Page({
     imgList: [],
   },
   formSubmit: function (e) {
+    for (var i in e.detail.value){
+      console.log(i)
+      if (e.detail.value[i].length<1){
+        wx.showToast({
+          title: '信息不完整',
+        })
+      }
+    }
     let userinfo={
       name:e.detail.value.name,
       phone: e.detail.value.phone,
