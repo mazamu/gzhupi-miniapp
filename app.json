@@ -22,7 +22,9 @@
     "pages/Campus/tools/lost",
     "pages/Setting/about/agreement",
     "pages/Campus/grade/rank",
-    "pages/Life/oldthings/index"
+    "pages/Life/oldthings/index",
+    "pages/Life/oldthings/add",
+    "pages/Life/oldthings/detail"
   ],
   "subpackages": [
     {

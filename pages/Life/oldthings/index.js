@@ -88,7 +88,9 @@ Page({
       }
     ],
   },
-
+  tapCard:function(e){
+    console.log(e)
+  },
   onLoad: function(options) {},
 
   onShareAppMessage: function() {
