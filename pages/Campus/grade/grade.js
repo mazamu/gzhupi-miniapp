@@ -5,7 +5,7 @@ Page({
   data: {
     hideSyncTip: true,
     refleshTimes: 0,
-    showAgree: true,
+    // showAgree: true,
     showTips: false,
     bindStatus: wx.getStorageSync("account") == "" ? false : true
   },
@@ -35,12 +35,14 @@ Page({
 
   onLoad: function (options) {
 
-    let agree = wx.getStorageSync("agree")
-    if (agree == true) {
-      this.setData({
-        showAgree: false
-      })
-    }
+    // let agree = wx.getStorageSync("agree")
+    // if (agree == true) {
+    //   this.setData({
+    //     showAgree: false
+    //   })
+    // } else {
+    //   return
+    // }
 
     let that = this
     if (!this.data.bindStatus) {
@@ -106,7 +108,7 @@ Page({
       title: '成绩查询',
       desc: '',
       // path: '路径',
-      imageUrl: "https://cos.ifeel.vip/gzhu-pi/images/pic/grade.png", 
+      imageUrl: "https://cos.ifeel.vip/gzhu-pi/images/pic/grade.png",
       success: function (res) {
         // 转发成功
         wx.showToast({
@@ -188,7 +190,7 @@ Page({
         if (res.statusCode != 200) {
           wx.showModal({
             title: '错误提示',
-            content: '服务器响应错误',
+            content: '服务器响应错\n' + res.data.errorMessage,
           })
           return
         }

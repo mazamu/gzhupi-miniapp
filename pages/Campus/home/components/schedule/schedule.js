@@ -64,11 +64,31 @@ Component({
           week = this.data.week - 1
         }
       }
-      this.setData({
-        weekDate: utils.setWeekDate(week - this.data.schoolWeek),
-        week: week,
-        current: e.detail.current,
-      })
+
+      if (week < 1 && this.data.schoolWeek < 1) {
+        console.log(1)
+        this.setData({
+          // weekDate: utils.setWeekDate(week - this.data.schoolWeek),
+          week: week,
+          current: e.detail.current,
+        })
+      } else if (this.data.schoolWeek < 1) {
+        console.log(2)
+        this.setData({
+          weekDate: utils.setWeekDate(week),
+          week: week,
+          current: e.detail.current,
+        })
+      } else {
+        console.log(3)
+        this.setData({
+          weekDate: utils.setWeekDate(week - this.data.schoolWeek),
+          week: week,
+          current: e.detail.current,
+        })
+      }
+
+
       wx.showToast({
         title: "第 " + String(week) + " 周",
         icon: "none",
@@ -90,7 +110,7 @@ Component({
       let start = this.data.kbList[id].start
       let detail = [this.data.kbList[id]]
       // 遍历课表，找出星期和开始节相同的课程
-      this.data.kbList.forEach(function (item) {
+      this.data.kbList.forEach(function(item) {
         if (item.weekday == day && item.start == start) {
           if (that.data.kbList.indexOf(item) != id) detail.push(item)
         }
@@ -198,8 +218,7 @@ Component({
       this.viewUpdate()
     },
 
-    ready: function() {
-    }
+    ready: function() {}
   },
 
   pageLifetimes: {
