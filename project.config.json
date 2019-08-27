@@ -56,7 +56,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 4,
+			"current": 6,
 			"list": [
 				{
 					"id": 0,
@@ -95,6 +95,19 @@
 					"name": "pages/Life/oldthings/index",
 					"pathName": "pages/Life/oldthings/index",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "发布二手",
+					"pathName": "pages/Life/oldthings/add",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "二手详情",
+					"pathName": "pages/Life/oldthings/detail",
 					"scene": null
 				}
 			]
