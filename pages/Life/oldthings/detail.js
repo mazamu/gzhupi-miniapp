@@ -22,7 +22,23 @@ Page({
       liked:3,
       comment:1,
     }],
+    list:[],
     authorize: false
+  },
+  getData:function(){
+    console.log("正在获取数据")
+    let tableName = 'flea_market'
+    let recordID = '5d55ac4f72d5f426018ed317'
+    let Product = new wx.BaaS.TableObject(tableName)
+    Product.get(recordID).then(res => {
+      console.log(res.data)
+      this.setData({
+        list:res.data
+      })
+      // success
+    }, err => {
+      // err
+    })
   },
   onTap(event) {
     this.setData({
@@ -67,7 +83,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getData()
   },
 
   /**

@@ -1,5 +1,5 @@
 // pages/Life/oldthings/add.js
-const request= require('../../../utils/request.js')
+const request = require('../../../utils/request.js')
 Page({
 
   /**
@@ -7,22 +7,73 @@ Page({
    */
   data: {
     imgList: [],
+    imgUrls: [], //上传后的图片地址
+    labels: ['']
+  },
+  add: function () {
+
+  },
+  labelAdd: function () {
+
   },
   formSubmit: function (e) {
-    for (var i in e.detail.value){
-      console.log(i)
-      if (e.detail.value[i].length<1){
+    var that = this
+    for (var i in e.detail.value) {
+      if (e.detail.value[i].length < 1) {
         wx.showToast({
           title: '信息不完整',
         })
       }
     }
-    let userinfo={
-      name:e.detail.value.name,
-      phone: e.detail.value.phone,
-      wechat: e.detail.value.wechat
+    wx.showModal({
+      title: '提示',
+      content: '请检查后提交',
+      success(res) {
+        if (res.confirm) {
+          that.uploadImg()
+          let userinfo = {
+            name: e.detail.value.name,
+            phone: e.detail.value.phone,
+            wechat: e.detail.value.wechat
+          }
+          let apple = {
+            title: e.detail.value.title,
+            content: e.detail.value.content,
+            price: e.detail.value.price,
+            info: userinfo,
+            label: e.detail.value.label,
+            image: that.data.imgUrls
+          }
+          console.log(apple)
+          let table ='flea_market'
+          let Product = new wx.BaaS.TableObject(table)
+          let product = Product.create()
+          product.set(apple).save().then(res => {
+            // success
+            wx.showToast({
+              title: '发布成功',
+            })
+          }, err => {
+            //err 为 HError 对象
+          })
+          wx.showToast({
+            title: '发布成功',
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
+  },
+  uploadImg: function () {
+    var that = this
+    for (var i in this.data.imgList) {
+      console.log(this.data.imgList)
+      that.uploadFile('flea_market', that.data.imgList[i]).then(res => {
+        console.log(res)
+        that.data.imgUrls.push(res.path)
+      })
     }
-    console.log(userinfo)
   },
   uploadFile: function (categoryName, filePath) {
     // 上传文件
@@ -60,6 +111,7 @@ Page({
         }
       }
     });
+
   },
   ViewImage(e) {
     wx.previewImage({

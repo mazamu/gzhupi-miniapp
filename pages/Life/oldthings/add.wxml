@@ -5,6 +5,13 @@
     <view class='title'>标题</view>
     <input placeholder="品类品牌型会帮助买家更容易发现你的商品" class='radius' name='title'></input>
   </view>
+  <view class="cu-form-group margin-top" wx:key>
+    <view class='title'>标签</view>
+    <input placeholder="标签" class='radius' name='label' bindinput="labelAdd"></input>
+    <!-- <button class="cu-btn  shadow cuIcon-add"> -->
+      <!-- <text class="cuIcon-locationfill text-orange"></text> -->
+    <!-- </button> -->
+  </view>
   <view class="cu-form-group top" wx:hide="{{modalName==null}}">
     <view class='title'>物品描述</view>
     <textarea placeholder="品牌/品类/型号/附件" maxlength="-1" disabled="{{modalName!=null}}" placeholder-class='placeholder' name='content'></textarea>
@@ -40,13 +47,13 @@
   </view>
   <view class="cu-form-group">
     <view class='title'>联系电话</view>
-    <input placeholder="联系电话" class='radius' name='phone'></input>
+    <input placeholder="联系电话" class='radius' name='phone' type="digit"></input>
   </view>
   <view class="cu-form-group">
     <view class='title'>微信</view>
     <input placeholder="微信" class='radius' name='wechat'></input>
   </view>
   <view class='margin-top'>
-    <button class="line-olive round shadow" form-type="submit">发布</button>
+    <button class="line-olive round shadow" form-type="submit" bindtap="add">发布</button>
   </view>
 </form>
