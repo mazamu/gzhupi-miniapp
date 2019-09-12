@@ -33,7 +33,7 @@ Page({
     })
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
 
     // let agree = wx.getStorageSync("agree")
     // if (agree == true) {
@@ -56,21 +56,21 @@ Page({
       // 从缓存读取成绩
       wx.getStorage({
         key: 'grade',
-        success: function (res) {
+        success: function(res) {
           console.log("成绩", res)
           that.setData({
             grade: res.data,
             height: 350 + res.data.sem_list[0].grade_list.length * 170
           })
         },
-        fail: function (res) {
+        fail: function(res) {
           that.updateGrade()
         }
       })
     }
   },
 
-  onShow: function () {
+  onShow: function() {
     var time = new Date()
     if (time.getHours() >= 0 && time.getHours() < 7) {
       this.setData({
@@ -96,27 +96,27 @@ Page({
   },
 
   // 下拉刷新
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     this.updateGrade()
-    setTimeout(function () {
+    setTimeout(function() {
       wx.stopPullDownRefresh()
     }, 3000)
   },
 
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
     return {
       title: '成绩查询',
       desc: '',
       // path: '路径',
       imageUrl: "https://cos.ifeel.vip/gzhu-pi/images/pic/grade.png",
-      success: function (res) {
+      success: function(res) {
         // 转发成功
         wx.showToast({
           title: '分享成功',
           icon: "none"
         });
       },
-      fail: function (res) {
+      fail: function(res) {
         // 转发失败
         wx.showToast({
           title: '分享失败',
@@ -142,8 +142,8 @@ Page({
         title: '尚未绑定学号',
         icon: "none",
         duration: 1500,
-        success: function () {
-          setTimeout(function () {
+        success: function() {
+          setTimeout(function() {
             wx.navigateTo({
               url: "/pages/Setting/login/bindStudent"
             })
@@ -154,7 +154,7 @@ Page({
     }
     // 防止频繁刷新
     if (this.data.refleshTimes) {
-      setTimeout(function () {
+      setTimeout(function() {
         wx.stopPullDownRefresh()
       }, 2000)
 
@@ -176,8 +176,8 @@ Page({
   syncData() {
     let that = this
     this.iconAnimation()
-    wx.showLoading({
-      title: '更新成绩...',
+    this.setData({
+      loading: true
     })
     wx.request({
       method: "POST",
@@ -186,7 +186,7 @@ Page({
         'content-type': 'application/x-www-form-urlencoded'
       },
       data: this.data.account,
-      success: function (res) {
+      success: function(res) {
         if (res.statusCode != 200) {
           wx.showModal({
             title: '错误提示',
@@ -216,14 +216,17 @@ Page({
           duration: 1500,
         })
       },
-      fail: function (err) {
+      fail: function(err) {
         console.log("err:", err)
         wx.showToast({
           title: "请求失败",
           icon: "none"
         })
       },
-      complete: function (res) {
+      complete: function(res) {
+        that.setData({
+          loading: false
+        })
         if (res.statusCode == 502) {
           wx.showToast({
             title: "访问超时 " + res.statusCode,
@@ -232,7 +235,6 @@ Page({
         }
         console.log(res)
         clearInterval(that.data.num) // 停止动画
-        wx.hideLoading()
         wx.stopPullDownRefresh()
       }
     })
@@ -254,7 +256,7 @@ Page({
       })
     }
     this.setData({
-      num: setInterval(function () {
+      num: setInterval(function() {
         ami(n)
         n++
       }, 150)

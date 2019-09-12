@@ -12,11 +12,11 @@ Page({
     arrowUrl: "https://cos.ifeel.vip/gzhu-pi/images/icon/right-arrow.svg",
   },
 
-  onLoad: function(options) {
- 
+  onLoad: function (options) {
+
   },
 
-  onShareAppMessage: function() {
+  onShareAppMessage: function () {
 
   },
   onReady() {
@@ -24,13 +24,24 @@ Page({
     this.updateCheck()
   },
 
+  // 更新用户信息
+  userInfoHandler(data) {
+    wx.BaaS.auth.loginWithWechat(data, {
+      createUser: true,
+      syncUserProfile: "overwrite"
+    }).then(user => {
+      console.log(user)
+    })
+  },
+
   updateCheck() {
     let version = Config.get("version")
-    if (version < "0.9.2.20190712") {
+    if (version < "1.0.0.20190906") {
+      Config.reInit()
       this.setData({
         showUpdate: true
       })
-      Config.set("version", "0.9.2.20190712")
+      Config.set("version", "1.0.0.20190906")
     }
   },
 
@@ -127,7 +138,7 @@ Page({
     else this.data.schedule = false
     this.switchModel()
   },
-  catchtap(e) {},
+  catchtap(e) { },
 
 
 })

@@ -11,7 +11,7 @@ Component({
   },
 
   data: {
-    hideTimeLine: true,
+    hideTimeLine: !Config.get("tips").time_line,
     showDetail: false,
     current: 1,
     dis: "none",
@@ -88,7 +88,6 @@ Component({
         })
       }
 
-
       wx.showToast({
         title: "第 " + String(week) + " 周",
         icon: "none",
@@ -100,6 +99,11 @@ Component({
       this.setData({
         hideTimeLine: !this.data.hideTimeLine,
       })
+
+      // 修改时间轴不展开
+      let tips = Config.get("tips")
+      tips.time_line = false
+      Config.set("tips", tips)
     },
 
     // 课程详情弹窗
@@ -110,7 +114,7 @@ Component({
       let start = this.data.kbList[id].start
       let detail = [this.data.kbList[id]]
       // 遍历课表，找出星期和开始节相同的课程
-      this.data.kbList.forEach(function(item) {
+      this.data.kbList.forEach(function (item) {
         if (item.weekday == day && item.start == start) {
           if (that.data.kbList.indexOf(item) != id) detail.push(item)
         }
@@ -171,12 +175,12 @@ Component({
       wx.showModal({
         title: '提醒',
         content: '是否删除当前课程?',
-        success: function(e) {
+        success: function (e) {
           if (e.confirm) {
             wx.setStorage({
               key: 'course',
               data: obj,
-              success: function() {
+              success: function () {
                 that.setData({
                   kbList: obj.course_list,
                   showDetail: false,
@@ -212,13 +216,13 @@ Component({
   },
 
   lifetimes: {
-    created: function() {},
+    created: function () { },
 
-    attached: function() {
+    attached: function () {
       this.viewUpdate()
     },
 
-    ready: function() {}
+    ready: function () { }
   },
 
   pageLifetimes: {

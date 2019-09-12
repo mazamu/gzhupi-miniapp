@@ -113,6 +113,9 @@ Component({
           } else {
             item._background = item.backgroundColor || backgroundColor || this._getRandomColor()
             item._dateTime = item.time ? utils.relativeTime(item.time) : ''
+            item.created_at = item.created_at ? utils.relativeTime(item.created_at) : ''
+            item.updated_at = item.updated_at ? utils.relativeTime(item.updated_at) : ''
+            item.refresh_time = item.refresh_time ? utils.relativeTime(item.refresh_time) : ''
             item._rendered = false
             item._height = DEFAULT_HEIGHT
             item._expandStatus = item.expandStatus ? item.expandStatus : defaultExpandStatus // 默认展开状态
