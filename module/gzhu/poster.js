@@ -1,3 +1,9 @@
+try {
+  const Page = require('../sdk/ald-stat.js').Page
+  console.log(Page)
+} catch (error) {
+  console.log(error)
+}
 import Poster from '../com/wxcanvas/poster/poster';
 import PostConfig from './postconfig.js';
 import Utils from '../utils.js';
@@ -290,6 +296,7 @@ Page({
               wx.getUserInfo({
                 success(res) {
                   console.log("已授权微信", res.userInfo)
+                  res.userInfo.avatarUrl = Utils.headimgHD(res.userInfo.avatarUrl)
                   that.setData({
                     userInfo: res.userInfo,
                     isAuth: true

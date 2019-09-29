@@ -13,7 +13,8 @@
 
   <swiper-item wx:for="{{frames}}" wx:key class="flex justify-center {{cardCur==index?'cur':''}}">
     <!-- 预览效果 -->
-    <open-data type="userAvatarUrl" class='avatar'></open-data>
+    <image wx:if="{{userInfo.avatarUrl}}" class='avatar' src="{{userInfo.avatarUrl}}"></image>
+    <open-data wx:if="{{!userInfo.avatarUrl}}" type="userAvatarUrl" class='avatar'></open-data>
     <image class='frame' src="{{item}}"></image>
     <!-- 合成后的图片 -->
     <image wx:if="{{avatarPath}}" catchtap="preview" data-src="{{avatarPath}}" src="{{avatarPath}}" class="avatar"></image>
