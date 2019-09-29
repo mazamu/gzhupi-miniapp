@@ -13,7 +13,7 @@
 
   <swiper-item wx:for="{{frames}}" wx:key class="flex justify-center {{cardCur==index?'cur':''}}">
     <!-- 预览效果 -->
-    <image wx:if="{{userInfo.avatarUrl}}" class='avatar' src="{{userInfo.avatarUrl}}"></image>
+    <image wx:if="{{forDrawAvatar}}" class='avatar' src="{{forDrawAvatar}}"></image>
     <open-data wx:if="{{!userInfo.avatarUrl}}" type="userAvatarUrl" class='avatar'></open-data>
     <image class='frame' src="{{item}}"></image>
     <!-- 合成后的图片 -->
@@ -38,6 +38,8 @@
 <view class="btns">
   <button wx:if="{{!isAuth}}" open-type="getUserInfo" bindgetuserinfo='userInfoHandler' class="btn">点击授权</button>
   <button wx:if="{{isAuth && !avatarPath}}" class="btn" data-type="avatar" catchtap="drawCanvas">合成头像</button>
+  <button wx:if="{{isAuth && !avatarPath}}" class="btn" data-type="avatar" catchtap="chooseImage">本地图片</button>
+
   <button wx:if="{{avatarPath}}" class="btn" catchtap='eventSave'>保存头像</button>
   <button wx:if="{{avatarPath}}" class="btn" data-type="post" catchtap='drawCanvas'>生成海报</button>
 </view>

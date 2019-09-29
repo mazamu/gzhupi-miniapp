@@ -316,6 +316,9 @@ const helper = {
     _downImage(imageUrl) {
         return new Promise((resolve, reject) => {
             if (/^http/.test(imageUrl) && !new RegExp(wx.env.USER_DATA_PATH).test(imageUrl)) {
+              if (imageUrl.indexOf('http://tmp') != -1) {
+                resolve(imageUrl);
+              } else {
                 wx.downloadFile({
                     url: this._mapHttpToHttps(imageUrl),
                     success: (res) => {
@@ -329,6 +332,7 @@ const helper = {
                         reject(err);
                     },
                 });
+              }
             } else {
                 // 支持本地地址
                 resolve(imageUrl);
