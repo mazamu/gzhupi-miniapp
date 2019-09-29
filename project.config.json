@@ -5,7 +5,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": false,
+		"urlCheck": true,
 		"es6": false,
 		"enhance": true,
 		"postcss": true,
@@ -72,15 +72,15 @@
 				},
 				{
 					"id": 1,
-					"name": "update",
-					"pathName": "pages/Campus/home/home",
+					"name": "module/gzhu/poster",
+					"pathName": "module/gzhu/poster",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": 2,
-					"name": "二维码",
-					"pathName": "pages/Campus/home/home",
+					"name": "留言板",
+					"pathName": "pages/Life/wall/board",
 					"query": "",
 					"scene": 1047
 				},
@@ -123,6 +123,13 @@
 					"id": -1,
 					"name": "登录",
 					"pathName": "pages/Setting/login/bindStudent",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "数据",
+					"pathName": "pages/Setting/about/data",
 					"query": "",
 					"scene": null
 				}

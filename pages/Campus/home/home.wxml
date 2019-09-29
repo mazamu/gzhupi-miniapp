@@ -89,7 +89,7 @@
     </view>
     <button open-type="contact" session-from='{"nickName":"{{userInfo.nickName}}","avatarUrl":"{{userInfo.avatarUrl}}"}'>
       <image src='https://cos.ifeel.vip/gzhu-pi/images/icon/kefu.svg'></image>
-      <view style="color: var(--black);font-size:32rpx;font-family: Helvetica Neue, Helvetica, sans-serif;">活的客服</view>
+      <view style="color: var(--black);font-size:32rpx;font-family: Helvetica Neue, Helvetica, sans-serif;">联系派派</view>
       <image src='{{arrowUrl}}'></image>
     </button>
     <view class='item' bindtap='tapDrawer' id='navToHelp'>
@@ -109,15 +109,15 @@
 <modal show="{{showUpdate}}" title="版本更新">
   <view>更新提醒</view>
   <view style='font-size:90%;color:rgb(80,80,80);margin:20rpx;'>
-    <view> * 新增初版校园二手功能</view>
-    <view> * 优化用户体验</view>
-    <view> * 更新成绩为相对排名百分比</view>
-    <view> * 默认展开课程时间轴</view>
+    <view> * 【实验课】物理实验课程功能更新</view>
+    <button bindtap="navTo" id="exp" class="margin bg-yellow text-white round">同步【实验课】</button>
+    <view> * 加入派派数据统计页面</view>
+    <button bindtap="navTo" id="data" class="margin bg-cyan round">查看【派派数据】</button>
+    <view> * 【校园二手】修复浏览统计</view>
+    <button bindtap="navTo" id="oldthings" class="margin bg-pink round">发布【校园二手】</button>
   </view>
-  <!-- <view>考试成绩陆续出来了，赶紧去刷刷刷吧！</view> -->
-
-  <button open-type="contact" class='callme'>
+  <!-- <button open-type="contact" class='callme'>
     <image style='width:80rpx;height:80rpx' src='https://cos.ifeel.vip/gzhu-pi/images/icon/kefu.svg'></image>
     <view style='font-size:90%;margin-left:10rpx'>提供建议</view>
-  </button>
+  </button> -->
 </modal>

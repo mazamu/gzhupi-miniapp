@@ -36,12 +36,12 @@ Page({
 
   updateCheck() {
     let version = Config.get("version")
-    if (version < "1.0.0.20190906") {
+    if (version < "1.0.3.20190923") {
       Config.reInit()
       this.setData({
         showUpdate: true
       })
-      Config.set("version", "1.0.0.20190906")
+      Config.set("version", "1.0.5.20190929")
     }
   },
 
@@ -101,7 +101,7 @@ Page({
         break
       case "navToAbout":
         wx.navigateTo({
-          url: '/pages/Setting/about/about',
+          url: '/pages/Setting/about/data',
         })
         break
       case "navToSync":
@@ -140,5 +140,21 @@ Page({
   },
   catchtap(e) { },
 
+  navTo(e) {
+    let url = ""
+    switch (e.target.id) {
+      case "exp":
+        url = "/pages/Campus/exp/exp"
+        break
+      case "data":
+        url = "/pages/Setting/about/data"
+        break
+      case "oldthings":
+        url = "/pages/Life/oldthings/index"
+    }
+    wx.navigateTo({
+      url: url,
+    })
+  }
 
 })

@@ -25,7 +25,9 @@
     "pages/Life/oldthings/index",
     "pages/Life/oldthings/post",
     "pages/Life/oldthings/detail",
-    "pages/Life/oldthings/mine"
+    "pages/Life/oldthings/mine",
+    "pages/Life/wall/board",
+    "pages/Setting/about/data"
   ],
   "subpackages": [
     {
@@ -41,7 +43,8 @@
       "root": "module",
       "pages": [
         "vote/vote",
-        "vote/rule"
+        "vote/rule",
+        "gzhu/poster"
       ],
       "independent": true
     }
@@ -55,7 +58,7 @@
   },
   "plugins": {
     "sdkPlugin": {
-      "version": "2.3.0",
+      "version": "2.7.0",
       "provider": "wxc6b86e382a1e3294"
     },
     "tencentvideo": {

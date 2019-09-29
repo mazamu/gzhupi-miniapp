@@ -12,8 +12,9 @@
           <view style="font-weight:bold" wx:if="{{content_list[item].title}}" class="user-name">{{content_list[item].title}}</view>
           <view style="color: var(--gray);font-size:75%;">{{content_list[item].refresh_time}}</view>
         </view>
-        <view wx:if="{{!content_list[item].info.isBuy}}" class="price">￥{{content_list[item].price}}</view>
-        <view wx:if="{{content_list[item].info.isBuy}}" class="price">求购</view>
+        <view wx:if="{{content_list[item].status==-1}}" class="price">下架</view>
+        <view wx:if="{{content_list[item].status==0 && !content_list[item].info.isBuy}}" class="price">￥{{content_list[item].price}}</view>
+        <view wx:if="{{content_list[item].status==0 && content_list[item].info.isBuy}}" class="price">求购</view>
 
       </view>
 
