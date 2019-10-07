@@ -23,14 +23,16 @@ var config = {
     "pixelRatio": 1,
     "width": 300
   },
+  "avatarHeight": 42,
   "background": "https://cos.ifeel.vip/gzhu-pi/images/campus/bg16.png",
   "background16": "https://cos.ifeel.vip/gzhu-pi/images/campus/bg16.png",
   "background18": "https://cos.ifeel.vip/gzhu-pi/images/campus/bg18.png",
+  "countHeight": 11,
   "frames": [
     "https://cos.ifeel.vip/gzhu-pi/images/campus/frame01.png",
     "https://cos.ifeel.vip/gzhu-pi/images/campus/frame02.png",
     "https://cos.ifeel.vip/gzhu-pi/images/campus/frame03.png",
-    "https://cos.ifeel.vip/gzhu-pi/images/campus/frame04.png",
+    "https://cos.ifeel.vip/gzhu-pi/images/campus/frame06.png",
     "https://cos.ifeel.vip/gzhu-pi/images/campus/frame05.png"
   ],
   "post": {
@@ -57,7 +59,7 @@ var config = {
         "name": "avatar",
         "url": "",
         "width": 280,
-        "x": 300,
+        "x": 310,
         "y": 698
       },
       {
@@ -75,9 +77,7 @@ var config = {
   },
   "shareCover": "https://cos.ifeel.vip/gzhu-pi/images/campus/share-cover.png",
   "shareTitle": "请给我一面国旗@广州大学团委",
-  "showCount": true,
-  "countHeight": 11,
-  "avatarHeight": 42,
+  "showCount": true
 }
 
 module.exports = {

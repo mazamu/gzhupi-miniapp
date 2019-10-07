@@ -1,9 +1,4 @@
-try {
-  const Page = require('../sdk/ald-stat.js').Page
-  console.log(Page)
-} catch (error) {
-  console.log(error)
-}
+const App = require('../sdk/ald-stat.js').App
 import Poster from '../com/wxcanvas/poster/poster';
 import PostConfig from './postconfig.js';
 import Utils from '../utils.js';
