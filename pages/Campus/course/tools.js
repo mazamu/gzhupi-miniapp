@@ -1,4 +1,7 @@
 const Page = require('../../../utils/sdk/ald-stat.js').Page;
+// let rewardedVideoAd = null
+let interstitialAd = null
+
 Page({
 
   data: {
@@ -36,13 +39,83 @@ Page({
     })
 
     this.getClassList()
-
+    // this.rewardAD()
+    this.insertAD()
   },
 
-  onShareAppMessage: function() {},
+  onShareAppMessage: function() {
+    return {
+      title: title ? title : "",
+      path: '/pages/Campus/course/tools?id=query',
+      imageUrl: imageUrl ? imageUrl : "",
+      success: function(res) {
+        wx.showToast({
+          title: '分享成功',
+          icon: "none"
+        });
+      }
+    }
+  },
 
+  insertAD() {
+    if (wx.createInterstitialAd) {
+      interstitialAd = wx.createInterstitialAd({
+        adUnitId: 'adunit-fba645195084f056'
+      })
+      interstitialAd.onLoad(() => {
+        console.log('onLoad event emit')
+      })
+      interstitialAd.onError((err) => {
+        console.log('onError event emit', err)
+      })
+      interstitialAd.onClose((res) => {
+        console.log('onClose event emit', res)
+      })
+    }
+  },
+  onShow(){
+    if (interstitialAd) {
+      interstitialAd.show().catch((err) => {
+        console.error('show ad error ', err)
+      })
+    }
+  },
+
+
+  // rewardAD() {
+  //   if (wx.createRewardedVideoAd) {
+  //     rewardedVideoAd = wx.createRewardedVideoAd({
+  //       adUnitId: 'adunit-bdbbdebf506ba881'
+  //     })
+  //     rewardedVideoAd.onLoad(() => {
+  //       console.log('onLoad event emit')
+  //     })
+  //     rewardedVideoAd.onError((err) => {
+  //       console.log('onError event emit', err)
+  //     })
+  //     rewardedVideoAd.onClose((res) => {
+  //       console.log('onClose event emit', res)
+  //       if (res && res.isEnded) {
+  //         console.log("正常播放结束")
+  //       } else {
+  //         console.log("播放中途退出")
+  //       }
+  //     })
+  //   }
+  // },
 
   nav() {
+    // if (rewardedVideoAd) {
+    //   rewardedVideoAd.show().catch(() => {
+    //     // 失败重试
+    //     rewardedVideoAd.load()
+    //       .then(() => rewardedVideoAd.show())
+    //       .catch(err => {
+    //         console.log('激励视频 广告显示失败',err)
+    //       })
+    //   })
+    // }
+
     let str = this.data.semList[this.data.semIndex]
     let sp = str.split("-")
     let year = sp[0] + "-" + sp[1]
