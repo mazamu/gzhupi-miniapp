@@ -28,7 +28,9 @@
     "pages/Life/oldthings/mine",
     "pages/Life/wall/board",
     "pages/Setting/about/data",
-    "pages/Campus/second/second"
+    "pages/Campus/second/second",
+    "pages/Campus/grade/achieve",
+    "pages/Campus/grade/list"
   ],
   "subpackages": [
     {
