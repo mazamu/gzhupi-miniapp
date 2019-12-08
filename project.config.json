@@ -57,7 +57,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 13,
+			"current": 15,
 			"list": [
 				{
 					"id": 0,
@@ -166,6 +166,12 @@
 					"name": "图书馆",
 					"pathName": "pages/Campus/library/search",
 					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "投票",
+					"pathName": "module/vote/vote",
 					"scene": null
 				}
 			]

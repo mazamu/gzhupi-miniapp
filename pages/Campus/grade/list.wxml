@@ -37,7 +37,7 @@
 <view wx:if="{{list.length==0}}" class="margin-top-xl text-center text-grey">暂无数据...</view>
 
 <!-- 列表 -->
-<view wx:for="{{list}}" wx:key="{{index}}" class="cu-card article" style="overflow:visible">
+<view wx:for="{{list}}" wx:key="index" class="cu-card article" style="overflow:visible">
 
   <view class="cu-item shadow" bindtap="tapItem" id="{{index}}" style="background:rgb(245, 245, 245)">
     <!-- 标题 -->

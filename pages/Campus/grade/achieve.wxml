@@ -21,7 +21,7 @@
 </view>
 
 <view class='nav-list'>
-  <block wx:for="{{achieve}}" wx:key>
+  <block wx:for="{{achieve}}" wx:key="index">
     <view bindtap="navTo" data-type="{{item.type}}" wx:if="{{tool.isHidden(item.type)}}" class="nav-li bg-{{colors[index%10]}}">
       <view class="nav-title text-cut">{{item.type}}</view>
       <view class="nav-name">要求：{{item.required}}</view>
