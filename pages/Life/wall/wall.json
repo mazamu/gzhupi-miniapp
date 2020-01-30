@@ -1,6 +1,8 @@
 {
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
   "usingComponents": {
     "navBar": "/pages/Components/navBar",
-    "swiper-page": "/components/swiper-page/swiper-page"
+    "brickflow": "/components/brickflow/brickflow"
   }
 }
