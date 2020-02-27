@@ -125,6 +125,7 @@ Page({
         this.data.fliter = "$eq.日常"
         break
       case "广大情墙":
+        this.data.fliter = "$eq.情墙"
         break
       case "悄悄话":
         this.setData({

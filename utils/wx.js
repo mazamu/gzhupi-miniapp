@@ -4,8 +4,8 @@ wx.$param = require('param').param
 
 // 封装的wx微信全局方法
 
-wx.$ajax = function(option) {
-  return new Promise(function(resolve, reject) {
+wx.$ajax = function (option) {
+  return new Promise(function (resolve, reject) {
     if (option.method == undefined || typeof option.method !== "string") {
       option.method = "POST"
     }
@@ -88,7 +88,6 @@ wx.$ajax = function(option) {
             return
           }
         }
-
         // 没有使用自定义响应协议
         resolve(res)
         return
@@ -105,7 +104,7 @@ wx.$ajax = function(option) {
         })
       },
       complete: (res) => {
-        console.log("response:", res)
+        console.log("response :" + option.url, res)
         wx.hideLoading()
       }
     })
@@ -118,7 +117,7 @@ wx.$ajax = function(option) {
  * @param {object|string}  e    如果是字符串，直接跳转；对象，就解析到e.target.dataset.url
  * @param {object} args         页面参数
  */
-wx.$navTo = function(e, args) {
+wx.$navTo = function (e, args) {
   console.log('fun: navTo', e, args)
   let args_str = []
   if (typeof args === 'object') {
@@ -180,7 +179,7 @@ wx.$navTo = function(e, args) {
  * @param {object}  obj
  * @return {string} query
  */
-wx.$objectToQuery = function(obj = {}) {
+wx.$objectToQuery = function (obj = {}) {
 
   if (typeof obj != 'object') {
     console.error("not object")

@@ -335,7 +335,7 @@ Component({
   // 生命周期方法
   lifetimes: {
     attached: function() {
-      console.log(this.data)
+      // console.log(this.data)
     }
   },
 })
