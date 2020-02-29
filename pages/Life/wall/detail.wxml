@@ -42,7 +42,7 @@
 						</view>
 					</view>
 					<view class="text-gray text-lg text-right padding-sm" style="flex:1">
-						<text class="cuIcon-attentionfill margin-lr-xs"></text>{{detail.viewed}}
+						<text class="cuIcon-footprint margin-lr-xs"></text>{{detail.viewed}}
 						<text bindtap="operate" data-op="star" class="cuIcon-appreciatefill margin-lr-xs"></text>{{detail.liked}}
 						<text class="cuIcon-messagefill margin-lr-xs"></text>{{detail.discussed}}
 					</view>

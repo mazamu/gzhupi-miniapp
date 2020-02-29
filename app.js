@@ -38,7 +38,7 @@ App({
     }
 
     userService.auth()
-    userService.update_create()
+    // userService.update_create()
 
   },
 
