@@ -26,7 +26,7 @@ Page({
 
   onShareAppMessage: function () {
     return {
-      title: this.data.navTitle + this.data.detail.title,
+      title: this.data.navTitle + "-" + this.data.detail.title,
       desc: '',
       path: '/pages/Life/wall/detail?id=' + this.data.id,
       imageUrl: this.data.detail.image[0],
@@ -75,6 +75,8 @@ Page({
 
   // 评论成功回调，发送通知
   discussSuccess(e) {
+    let cur_uid = wx.getStorageSync('gzhupi_user').id
+    if (cur_uid == this.data.detail.created_by) return
 
     let sender = wx.getStorageSync('gzhupi_user').nickname
     if (e.detail.anonymity) {
@@ -138,8 +140,6 @@ Page({
       case "claim":
         wx.$subscribe()
         this.setRelation("claim")
-        // TODO 云函数通知
-        this.sendClaimMsg()
         break
       case "delete":
         wx.showModal({
@@ -212,6 +212,10 @@ Page({
         this.setData({
           ["detail." + type + "_list"]: list
         })
+        // 认领成功发送通知
+        if (type == "claim" && cur_uid != this.data.detail.created_by) {
+          this.sendClaimMsg()
+        }
       }
     })
   },
