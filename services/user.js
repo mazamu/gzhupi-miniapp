@@ -18,7 +18,7 @@ class UserService {
         stu_id = ""
       }
       let form = {
-        stu_id: stu_id,
+        // stu_id: stu_id,
         minapp_id: user.user_id,
         open_id: user.openid,
         union_id: user.unionid,
@@ -49,6 +49,8 @@ class UserService {
               data: res.data,
             })
           }
+        }).catch(err=>{
+          console.log(err)
         })
     }).catch(err => {
       if (err.code === 604) {
@@ -97,7 +99,7 @@ class UserService {
         phone: user._phone,
       }
       wx.$ajax({
-          url: wx.$param.server["prest"] + wx.$param.server["scheme"] +"/t_user",
+          url: wx.$param.server["prest"] + wx.$param.server["scheme"] + "/t_user",
           method: "put",
           data: form,
           showErr: false,
@@ -115,6 +117,24 @@ class UserService {
       }
     })
   }
+
+  // 绑定公众号openid
+  bind_mp(mp_id) {
+    if (!mp_id) {
+      console.error("mp_id length is not 28 " + mp_id)
+      return
+    }
+    wx.$ajax({
+        url: wx.$param.server["prest"] + "/auth?type=bind_mp&mp_open-id=" + mp_id,
+        url: "http://localhost:9000/api/v1/auth?type=bind_mp&mp_open-id=" + mp_id,
+        method: "post",
+        data: {},
+      })
+      .then(res => {
+        console.log(res)
+      })
+  }
+
 }
 
 export default UserService
