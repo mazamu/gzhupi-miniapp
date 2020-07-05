@@ -21,15 +21,15 @@ wx.$ajax = function (option) {
       option.url = wx.$param.server["aliyun_go"] + option.url
     }
     if (typeof option.loading == "boolean" && option.loading) {
-      // wx.showLoading({
-      //   title: '加载中',
-      //   duration: 60000,
-      //   mask: true,
-      // })
+      wx.showLoading({
+        title: '加载中',
+        duration: 60000,
+        mask: true,
+      })
     } else if (typeof option.loading == "string") {
       wx.showLoading({
         title: option.loading,
-        duration: 60000,
+        duration: 10000,
         mask: true,
       })
     }
@@ -47,6 +47,7 @@ wx.$ajax = function (option) {
           if (res.statusCode == 401) wx.removeStorageSync('gzhupi_cookie')
           let msg = res.data.error
           msg = msg ? msg : res.errMsg
+          msg = String(res.statusCode) + " 错误"
           reject({
             when: "http_status_error",
             error: msg,
@@ -107,7 +108,9 @@ wx.$ajax = function (option) {
       },
       complete: (res) => {
         console.log("response :" + option.url, res)
-        // wx.hideLoading()
+        if (!!option.loading) {
+          wx.hideLoading()
+        }
       }
     })
   })
@@ -364,4 +367,44 @@ wx.$checkUser = function (nav = true) {
   }
 
   return true
+}
+
+// 违规文本检测
+wx.$checkText = async function (text) {
+  if (text == "" || text == undefined) return
+  var is_risk = await wx.BaaS.wxCensorText(text).then(res => {
+    // console.log(res.data.risky)
+    if (res.data.risky) {
+      wx.showModal({
+        title: '警告',
+        content: '您的发布内容包含违规词语',
+      })
+      return res.data.risky
+    }
+    return res.data.risky
+  }, err => {
+    console.log(err)
+    return false
+  })
+  return is_risk
+}
+
+// 违规图片检测
+wx.$checkImg = async function (path) {
+  if (text == "" || text == undefined) return
+  var is_risk = await wx.BaaS.wxCensorImage(path).then(res => {
+    // console.log(res.data.risky)
+    if (res.data.risky) {
+      wx.showModal({
+        title: '警告',
+        content: '您选择的图片包含敏感内容',
+      })
+      return res.data.risky
+    }
+    return res.data.risky
+  }, err => {
+    console.log(err)
+    return false
+  })
+  return is_risk
 }
