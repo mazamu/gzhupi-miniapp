@@ -2,7 +2,7 @@ var utils = require("../../../../../utils/utils.js")
 var Data = require("../../../../../utils/data.js")
 var Config = require("../../../../../utils/config.js")
 var showTimes = 0
-var maxWeeks = 20
+var maxWeeks = 25
 Component({
   properties: {
     show: {
@@ -26,10 +26,48 @@ Component({
     weekDays: Data.weekDays,
     timeLine: Data.timeLine,
     colors: Data.colors,
-    kbList: Data.course_sample
+    kbList: Data.course_sample,
+
+    // 选择周次
+    showSelectWeek: false,
+    // 最大周数25
+    maxWeeks: maxWeeks,
   },
 
   methods: {
+    changeWeek() {
+      // this.animate(
+      //   "#schedule",
+      //   [
+      //     { scale: [1, 1], ease: "ease" },
+      //     { scale: [0.98, 0.98], ease: "ease-in-out" },
+      //     { scale: [0.99, 0.99], ease: "ease" },
+      //   ],
+      //   100
+      // );
+      this.setData({
+        // scale: 0.98,
+        showSelectWeek: true,
+      });
+    },
+    // 修改当前week
+    setWeek(e) {
+      this.setData({
+        week: Number(e.detail),
+        weekDate: utils.setWeekDate(e.detail - this.data.schoolWeek),
+      });
+    },
+
+    closewin() {
+      // this.animate(
+      //   "#schedule",
+      //   [{ scale: [0.99, 0.99] }, { scale: [1, 1] }],
+      //   100
+      // );
+      this.setData({
+        showSelectWeek: false,
+      });
+    },
 
     // 恢复校历周
     resetWeek() {
@@ -67,21 +105,18 @@ Component({
       }
 
       if (week < 1 && this.data.schoolWeek < 1) {
-        console.log(1)
         this.setData({
           // weekDate: utils.setWeekDate(week - this.data.schoolWeek),
           week: week,
           current: e.detail.current,
         })
       } else if (this.data.schoolWeek < 1) {
-        console.log(2)
         this.setData({
           weekDate: utils.setWeekDate(week),
           week: week,
           current: e.detail.current,
         })
       } else {
-        console.log(3)
         this.setData({
           weekDate: utils.setWeekDate(week - this.data.schoolWeek),
           week: week,
@@ -123,7 +158,7 @@ Component({
       this.setData({
         detail: detail,
         showDetail: true,
-        currentIndex: 0 //恢复滑动视图索引
+        currentIndex: 0, //恢复滑动视图索引
       })
       this.showCourseId(0)
     },
@@ -153,12 +188,12 @@ Component({
       switch (e.currentTarget.id) {
         case "0": //编辑
           wx.navigateTo({
-            url: '/pages/Campus/home/addCourse/addCourse',
+            url: "/pages/Campus/home/addCourse/addCourse",
           })
           break
         case "1": //添加
           wx.navigateTo({
-            url: '/pages/Campus/evaluation/evaluation',
+            url: "/pages/Campus/evaluation/evaluation",
           })
           break
         case "2": //删除
@@ -171,16 +206,16 @@ Component({
     deleteCourse() {
       let that = this
       let id = this.data.openTarget
-      let obj = wx.getStorageSync('course')
+      let obj = wx.getStorageSync("course")
       if (obj == "") return
       obj.course_list.splice(id, 1)
       wx.showModal({
-        title: '提醒',
-        content: '是否删除当前课程?',
+        title: "提醒",
+        content: "是否删除当前课程?",
         success: function (e) {
           if (e.confirm) {
             wx.setStorage({
-              key: 'course',
+              key: "course",
               data: obj,
               success: function () {
                 that.setData({
@@ -202,10 +237,10 @@ Component({
       })
     },
     viewUpdate() {
-      let course = wx.getStorageSync('course')
-      let exp = wx.getStorageSync('exp')
+      let course = wx.getStorageSync("course")
+      let exp = wx.getStorageSync("exp")
       if (course != "" || exp != "") {
-        let kbList = course == "" ? [] : course.course_list
+        let kbList = course == "" ? [] : course.course_list;
         if (Config.get("showExp")) {
           kbList = kbList.concat(exp)
         }
