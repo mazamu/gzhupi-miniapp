@@ -170,7 +170,7 @@ wx.$navTo = function (e, args) {
         wx.switchTab({
           url: e + args_str,
           fail: err => {
-            console.err(err)
+            console.error(err)
           }
         })
       }

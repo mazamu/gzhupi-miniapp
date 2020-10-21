@@ -251,6 +251,7 @@ Component({
 
         // 获取最大周数，小于20取20
         for (let i = 0; i < kbList.length; i++) {
+          if (!Array.isArray(kbList[i].week_section)) continue
           let max = Math.max(...kbList[i].week_section)
           if (max > maxWeeks) {
             maxWeeks = max
@@ -272,6 +273,10 @@ Component({
 
   pageLifetimes: {
     show() {
+      this.setData({
+        week: utils.getSchoolWeek(), //周数
+        schoolWeek: utils.getSchoolWeek(), //校历周
+      })
       // 初次onshow不执行
       if (showTimes) {
         this.viewUpdate()

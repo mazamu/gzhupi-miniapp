@@ -19,6 +19,7 @@
         <input name='password' type='password' value='{{exp_account.password}}' placeholder="实验平台密码"></input>
       </view>
       <button formType="submit" type='primary' id='exp' loading="{{loading}}">{{exp_btn}}</button>
+      <button bindtap="navTo" data-url="/pages/Campus/exp/exp" class="bg-yellow">查看实验</button>
     </form>
     <view class='tips'>
       <view>*密码一般和教务系统的不同</view>

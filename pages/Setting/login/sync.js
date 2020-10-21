@@ -16,7 +16,7 @@ Page({
     // exp_account: wx.getStorageSync("exp_account"),
   },
 
-  onLoad: function(options) {
+  onLoad: function (options) {
     console.log(wx.$param.school["sem_list"].indexOf(wx.$param.school["year_sem"]))
     this.setData({
       update_time: wx.getStorageSync("course").update_time,
@@ -30,6 +30,10 @@ Page({
         current: Number(options.id)
       })
     }
+  },
+
+  navTo(e) {
+    wx.$navTo(e)
   },
 
   switch (e) {
@@ -73,7 +77,7 @@ Page({
       username: e.detail.value.username,
       password: e.detail.value.password,
       year_sem: that.data.sem_list[that.data.pickerIndex],
-      first_monday:wx.$param.school["first_monday"]
+      first_monday: wx.$param.school["first_monday"]
     }
 
     switch (id) {
@@ -82,7 +86,7 @@ Page({
         wx.showModal({
           title: '提示',
           content: '同步将会覆盖当前课表',
-          success: function(res) {
+          success: function (res) {
             if (res.confirm) {
               wx.$ajax({
                   url: "/jwxt/course",
@@ -123,16 +127,29 @@ Page({
 
         // 实验
       case "exp":
-        Request.sync(e.detail.value.username, e.detail.value.password, "exp", "exp_account").then(res => {
-          wx.showToast({
-            title: res,
-            icon: res == "同步完成" ? "success" : "none"
+        wx.$ajax({
+            url: "/exp",
+            data: account,
+            loading: true
           })
-          that.setData({
-            loading: false,
-            exp_btn: res == "同步完成" ? "已同步" : "同步实验",
+          .then(res => {
+            wx.showToast({
+              title: "同步完成",
+              icon: "none"
+            })
+            wx.setStorageSync("exp", res.data)
+            wx.setStorageSync("exp_account", account)
+
+            that.setData({
+              loading: false
+            })
+
+          }).catch(err => {
+            console.error(err)
+            that.setData({
+              loading: false
+            })
           })
-        })
         break
 
 
