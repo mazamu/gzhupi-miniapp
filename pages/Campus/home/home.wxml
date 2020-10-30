@@ -30,7 +30,10 @@
 	<day todayCourse="{{todayCourse}}"></day>
 	<view class='divide-line'></view>
 	<!-- 成绩概览 -->
-	<grade></grade>
+	<!-- <grade></grade>
+	<view class='divide-line'></view> -->
+
+	<hot-topic></hot-topic>
 	<view class='divide-line'></view>
 
 </view>

@@ -51,7 +51,8 @@
 			</view>
 
 			<!-- 悄悄话 单列 -->
-			<view wx:if="{{columns==1 && content_list[item].type=='悄悄话'}}" class="oldthings">
+			<view wx:if="{{columns==1 && content_list[item].type!='情墙'}}" class="oldthings">
+				<!-- <view wx:if="{{columns==1 && content_list[item].type=='悄悄话'}}" class="oldthings"></view> -->
 				<view class="base-info">
 					<image class="avatar" src="{{content_list[item].avatar}}" mode="widthFix" catchtap="{{content_list[item].created_by ? 'onUserAreaTap' : ''}}" data-user-id="{{content_list[item].created_by}}"></image>
 					<view class="text-lg text-orange margin-left-xs">

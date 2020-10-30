@@ -1,0 +1,9 @@
+<view wx:if="{{mode=='prod' && dataSet.length>0}}" style="margin:0 10rpx;">
+  <view class='action margin-tb margin-lr-sm text-lg'>
+    <text class='cuIcon-titles text-orange'></text> 最近话题
+  </view>
+  <view style="background:#f2f6f9;padding-top:15rpx">
+    <brickflow _tplName="wall" dataSet="{{dataSet}}" option="{{brick_option}}" bind:tapCard="tapCard"
+      bind:tapLike="tapLike" bind:tapUser="tapUser" />
+  </view>
+</view>

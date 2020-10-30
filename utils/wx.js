@@ -433,7 +433,7 @@ wx.$syncParam = async function () {
       // verify模式下 username有效且不是测试账号放行
       let account = wx.getStorageSync("account")
       if (res.data.data.mode == "verify") {
-        if (!!account.username && account.username != "20200504" && account.username != "20180829") {
+        if (!!account.username && account.username.length == 10) {
           res.data.data.mode = "prod"
         }
       }
