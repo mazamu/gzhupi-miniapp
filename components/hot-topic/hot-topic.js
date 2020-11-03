@@ -171,7 +171,7 @@ Component({
       let that = this
       wx.getNetworkType({
         success(res) {
-          if (res.networkType == "none") return
+          if (res.networkType == "none" || !wx.getStorageSync("gzhupi_cookie")) return
           that.getTopics()
         }
       })

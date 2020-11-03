@@ -47,7 +47,7 @@ wx.$ajax = function (option) {
           // if (res.statusCode == 401) wx.removeStorageSync('gzhupi_cookie')
           let msg = res.data.error
           msg = msg ? msg : res.errMsg
-          msg = String(res.statusCode) + " 错误"
+          msg = String(res.statusCode) + " 错误" + JSON.stringify(msg)
           reject({
             when: "http_status_error",
             error: msg,

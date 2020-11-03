@@ -193,7 +193,7 @@ Component({
           break
         case "1": //添加
           wx.navigateTo({
-            url: "/pages/Campus/evaluation/evaluation",
+            url: "/pages/Campus/evaluation/detail",
           })
           break
         case "2": //删除

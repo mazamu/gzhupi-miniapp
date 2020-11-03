@@ -79,7 +79,7 @@
 	</view>
 
 	<!-- 留言 -->
-	<discuss bind:success="discussSuccess" object_id="{{detail.id}}"></discuss>
+	<discuss bind:success="discussSuccess" object_id="{{detail.id}}" object="t_topic"></discuss>
 
 
 	<!-- 错误 -->

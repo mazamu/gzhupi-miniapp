@@ -11,7 +11,7 @@
     "pages/Campus/grade/grade",
     "pages/Campus/tools/calendar",
     "pages/Setting/mine/mine",
-    "pages/Campus/evaluation/evaluation",
+    "pages/Campus/evaluation/detail",
     "pages/Campus/gzhu/index",
     "pages/Campus/tools/exam",
     "pages/Campus/course/schedule",
@@ -34,7 +34,8 @@
     "pages/Life/wall/detail",
     "pages/Setting/webview/webview",
     "pages/Setting/login/auth",
-    "pages/Campus/tools/notice"
+    "pages/Campus/tools/notice",
+    "pages/Campus/evaluation/index"
   ],
   "subpackages": [
     {
