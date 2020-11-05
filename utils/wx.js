@@ -64,7 +64,7 @@ wx.$ajax = function (option) {
 
         // 缓存cookies
         if (res.header["Set-Cookie"] != undefined && res.header["Set-Cookie"] != "") {
-          wx.setStorageSync("gzhupi_cookie", res.header["Set-Cookie"]);
+          updateLocalCookie(res.header["Set-Cookie"])
         }
 
         // 自定义响应协议(只返回data)
@@ -114,6 +114,31 @@ wx.$ajax = function (option) {
       }
     })
   })
+}
+
+// 读取本地cookie，与新的cookie合并
+function updateLocalCookie(new_cookie) {
+  if (!new_cookie) return
+
+  let cookies = []
+  let cookie = wx.getStorageSync("gzhupi_cookie")
+  if (cookie) {
+    cookies = cookie.split(";")
+  }
+  cookies = cookies.concat(new_cookie.split(";"))
+
+  let set={}
+  for(let i in cookies){
+    let kv = cookies[i].split("=")
+    if (kv.length==2){
+      set[kv[0]]=kv[1]
+    }
+  }
+  let cookie_str=""
+  for(let key  in set){
+    cookie_str = cookie_str + `${key}=${set[key]};`
+  }
+  wx.setStorageSync("gzhupi_cookie", cookie_str);
 }
 
 /**
