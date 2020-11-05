@@ -1,5 +1,5 @@
 var utils = require("../../utils/date.js")
-
+var Config = require("../../utils/config.js")
 Component({
   options: {
     addGlobalClass: true
@@ -22,7 +22,7 @@ Component({
       imageFillMode: 'aspectFill',
       columns: 1,
     },
-
+    open: Config.get("hot_topic") === false ? false : true
   },
 
   methods: {
@@ -35,6 +35,13 @@ Component({
       if (mode == "prod") {
         return false
       } else return true
+    },
+
+    radioChange(e) {
+      Config.set("hot_topic", e.detail.value)
+      this.setData({
+        open: e.detail.value
+      })
     },
 
     // true 说明在防抖期间，应该停止执行
