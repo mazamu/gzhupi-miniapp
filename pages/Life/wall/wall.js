@@ -13,7 +13,7 @@ Page({
     dataSet: [],
     brick_option: {
       backgroundColor: "white",
-      forceRepaint: true,
+      forceRepaint: false,
       imageFillMode: 'aspectFill',
       columns: 2,
     },

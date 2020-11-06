@@ -43,10 +43,8 @@
 		</view>
 	</view>
 
-	<view class="margin-bottom-sm" style="height:30rpx;background:rgb(240,240,240)"></view>
-
 	<!-- 列表 -->
-	<view wx:if="{{dataSet.length>0}}">
+	<view wx:if="{{dataSet.length>0}}" style="padding-top:30rpx;background:rgb(240,240,240)">
 		<brickflow _tplName="wall" dataSet="{{dataSet}}" option="{{brick_option}}" bind:tapCard="tapCard" bind:tapLike="tapLike" bind:tapUser="tapUser"/>
 	</view>
 

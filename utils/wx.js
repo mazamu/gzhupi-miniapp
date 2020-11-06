@@ -127,15 +127,15 @@ function updateLocalCookie(new_cookie) {
   }
   cookies = cookies.concat(new_cookie.split(";"))
 
-  let set={}
-  for(let i in cookies){
+  let set = {}
+  for (let i in cookies) {
     let kv = cookies[i].split("=")
-    if (kv.length==2){
-      set[kv[0]]=kv[1]
+    if (kv.length == 2) {
+      set[kv[0]] = kv[1]
     }
   }
-  let cookie_str=""
-  for(let key  in set){
+  let cookie_str = ""
+  for (let key in set) {
     cookie_str = cookie_str + `${key}=${set[key]};`
   }
   wx.setStorageSync("gzhupi_cookie", cookie_str);
@@ -220,8 +220,8 @@ wx.$objectToQuery = function (obj = {}) {
   for (let i in obj) {
 
     if (!obj[i]) continue
-
-    args_str.push(i + '=' + encodeURIComponent(obj[i]))
+    let val = typeof (obj[i]) == "string" ? obj[i] : encodeURIComponent(obj[i])
+    args_str.push(i + '=' + val)
   }
   let query = '?' + args_str.join("&")
   return query
