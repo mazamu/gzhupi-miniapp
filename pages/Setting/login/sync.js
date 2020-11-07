@@ -5,19 +5,17 @@ Page({
   data: {
     current: 1,
     sem_list: wx.$param.school["sem_list"],
-    pickerIndex: wx.$param.school["sem_list"].indexOf(wx.$param.school["year_sem"]), //当前学期索引
+    picker_index: wx.$param.school["sem_list"].indexOf(wx.$param.school["year_sem"]), //当前学期索引
     loading: false,
     exp_btn: "同步实验",
     kb_btn: "同步课表",
 
-    // update_time: wx.getStorageSync("course").update_time,
-    // cet: wx.getStorageSync("cet"),
-    // account: wx.getStorageSync("account"),
-    // exp_account: wx.getStorageSync("exp_account"),
+    exam_picker_index: 0,
+    exam_list: ["大学英语四级-CET4", "大学英语六级-CET6"]
   },
 
   onLoad: function (options) {
-    console.log(wx.$param.school["sem_list"].indexOf(wx.$param.school["year_sem"]))
+
     this.setData({
       update_time: wx.getStorageSync("course").update_time,
       cet: wx.getStorageSync("cet"),
@@ -47,20 +45,36 @@ Page({
     })
   },
   pickerChange(e) {
-    this.setData({
-      pickerIndex: Number(e.detail.value)
-    })
+
+    switch (e.target.id) {
+      case "sem":
+        this.setData({
+          picker_index: Number(e.detail.value)
+        })
+        break
+      case "exam":
+        this.setData({
+          exam_picker_index: Number(e.detail.value)
+        })
+    }
+
   },
 
   // 提交表单
   formSubmit(e) {
     let that = this
     let id = e.detail.target.id
-    // 上报formId
-    wx.BaaS.wxReportTicket(e.detail.formId)
+
     if (e.detail.value.username == "" || e.detail.value.password == "") {
       wx.showToast({
         title: '用户名、密码不能为空',
+        icon: "none"
+      })
+      return
+    }
+    if (e.detail.value.name == "" || e.detail.value.idc == "") {
+      wx.showToast({
+        title: "姓名、身份证不能为空",
         icon: "none"
       })
       return
@@ -76,7 +90,7 @@ Page({
     let account = {
       username: e.detail.value.username,
       password: e.detail.value.password,
-      year_sem: that.data.sem_list[that.data.pickerIndex],
+      year_sem: that.data.sem_list[that.data.picker_index],
       first_monday: wx.$param.school["first_monday"]
     }
 
@@ -154,16 +168,17 @@ Page({
 
 
         // 四六级
-      case "cet":
-        wx.setStorageSync("cet", e.detail.value.cet)
-        wx.showToast({
-          title: '预存成功！',
+      case "toCet":
+        wx.setStorageSync("cet", e.detail.value)
+        let cet = that.data.exam_list[that.data.exam_picker_index]
+        cet = cet.indexOf("4") >= 0 ? 4 : 6
+        wx.navigateTo({
+          url: '/pages/Campus/cet/cet?cet=' + cet,
         })
-        that.setData({
+        this.setData({
           loading: false
         })
         break
     }
   },
-
 })
