@@ -36,6 +36,7 @@
     "pages/Setting/login/auth",
     "pages/Campus/tools/notice",
     "pages/Campus/evaluation/index",
+    "pages/Campus/evaluation/post",
     "pages/Campus/cet/cet"
   ],
   "subpackages": [

@@ -24,14 +24,18 @@
 <!-- 功能栏 -->
 <view class='nav'>
   <image id="favorite" bindtap='nav' src='https://cos.ifeel.vip/gzhu-pi/images/icon/favorited.svg'></image>
-  <image id="eval" bindtap='nav' src='/assets/edit.svg'></image>
+  <image id="eval" bindtap='toevals' src='/assets/edit.svg'></image>
   <image id="query" bindtap='nav' src='https://cos.ifeel.vip/gzhu-pi/images/icon/door.svg'></image>
 </view>
 
 
 <view wx:for="{{courses}}" wx:key="index" class='room' bindtap='flod' id="{{index}}">
 
-  <view class='title'>{{index+1}}. {{item.kcmc}}</view>
+  <view class='title'>
+    <text>{{index+1}}. {{item.kcmc}}</text>
+    <!-- <button catchtap="post" data-index="{{index}}" class="cu-btn shadow-blur bg-green" style="height: 48rpx;font-size:24rpx;">参与课评</button> -->
+    <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/edit.png" catchtap="post" data-index="{{index}}" style="width:60rpx;height:60rpx;"></image>
+  </view>
   <view class='p1'>
     <view class='p2' style='flex:2.5'>
       <view>周次：{{item.qsjsz}}</view>

@@ -6,7 +6,7 @@ Page({
     navTitle: "广大墙",
     pageSize: 20, //每页数量
     page: 1, //页数
-    loadDone: false, //加载完毕
+    loadDone: false, //加载完毕,控制底部木有更多
     queryStr: "", //搜索的字符串
     loading: true,
 

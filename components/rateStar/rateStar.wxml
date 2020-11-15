@@ -1,0 +1,32 @@
+<!--components/rateStar.wxml-->
+<view class="wrapper">
+	<block 
+		wx:for="{{redScore}}" 
+		wx:for-item="item" 
+		wx:for-index="index" 
+		wx:key="index">
+		<image 
+			src="/assets/rate_active.png" 
+			data-redIndex="{{index}}" 
+			bindtap="giveScore"></image>
+	</block>
+	<block 
+		wx:for="{{halfScore}}" 
+		wx:for-item="item" 
+		wx:for-index="index" 
+		wx:key="index">
+		<image 
+			src="/assets/half_star.png" 
+			 ></image>
+	</block>
+	<block 
+		wx:for="{{grayScore}}" 
+		wx:for-item="item" 
+		wx:for-index="index" 
+		wx:key="index">
+		<image 
+			src="/assets/rate.png" 
+			data-greyIndex="{{index}}" 
+			bindtap="giveScore"></image>
+	</block>
+</view>

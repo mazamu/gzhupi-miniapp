@@ -150,7 +150,7 @@ Page({
     })
   },
 
-
+//操作点赞、认领、删除主题
   operate(e) {
     if (this.isDebounce()) return
 
@@ -296,7 +296,7 @@ Page({
         console.log(err)
       })
   },
-
+//删除主题
   delByPk(row_id) {
     if (!row_id) return
     wx.$ajax({
@@ -325,7 +325,7 @@ Page({
         console.error(err)
       })
   },
-
+//删除主题时删除存储的文件
   delFile(fileIDs = []) {
     if (!fileIDs) return
     let MyFile = new wx.BaaS.File()

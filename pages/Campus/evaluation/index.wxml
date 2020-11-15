@@ -1,2 +1,67 @@
 <!--pages/Campus/evaluation/index.wxml-->
-<text>pages/Campus/evaluation/index.wxml</text>
+<wxs src='./mark.wxs' module="tool"></wxs>
+<navBar title="课程评价" navColor="rgba(255, 255, 255, 0.8)"></navBar>
+
+<fake wx:if="{{mode && mode!='prod'}}" type="eval"></fake>
+<!-- 加载动画 -->
+<view class='cu-load load-modal' wx:if="{{loading}}">
+	<view class='cuIcon-emojifill text-orange'></view>
+	<view class='gray-text'>Loading...</view>
+</view>
+<!-- 搜索框 -->
+<view class="box" style="position:fixed;width:100%;z-index:2">
+	<view class="cu-bar search bg-white">
+		<view class="search-form round" style="padding:5rpx">
+			<text class="cuIcon-search"></text>
+			<input type="text" placeholder="课程、教师、课程类型" confirm-type="search" bindinput="searchInput"
+				value="{{queryStr}}"></input>
+		</view>
+		<view class="action">
+			<button class="cu-btn bg-green round" bindtap="search">搜索</button>
+		</view>
+	</view>
+</view>
+<view wx:if="{{mode=='prod'}}">
+
+	<view class="eval_card" wx:for="{{dataSet}}" wx:key="{{item.id}}" bindtap="todetail" data-index="{{index}}">
+		<view class="card_top">
+			<view class="course_name">
+				<text>{{item.course_name}}</text>
+				<view class="credit" wx:if="{{item.credit}}">{{item.credit}}学分</view>
+			</view>
+		</view>
+		<view class="card_middle">
+			<view class="mid_item" wx:if="{{item.course_type}}">
+				课程类型：{{item.course_type}}
+			</view>
+			<view class="mid_item">
+				任课老师：{{item.teacher}}
+				<text wx:if="{{item.title}}">（{{item.title}}）</text>
+			</view>
+			<view class="mid_item" wx:if="{{item.college}}">
+				开课学院：{{item.college}}
+			</view>
+			<view class="mid_item" wx:if="{{item.period}}">
+				周学时：{{item.period}}
+			</view>
+		</view>
+		<view class="text-gray text-lg text-right padding-sm card_bottom" style="flex:1">
+			<text class="cuIcon-like margin-lr-xs"></text>{{item.liked}}
+			<text class="cuIcon-messagefill margin-lr-xs"></text>{{item.discussed}}
+			<view class="mark">
+				<rateStar class="stars" score="{{item.mark}}" readonly="true">
+				</rateStar>
+				<text wx:if="{{item.mark}}" style="color:{{tool.color(item.mark)}}">{{tool.fixed(item.mark)}}</text>
+				<text wx:else style="color:#515151;font-size:32rpx;">暂无</text>
+			</view>
+		</view>
+	</view>
+
+	<view class="cu-load" wx:if="{{dataSet.length>0 && loadDone}}">
+		<text class="text-gray text-df">木有更多啦~</text>
+	</view>
+	<view wx:if="{{dataSet.length==0 && !loading}}" class="flex flex-direction align-center margin-xl">
+		<image style="width:150rpx;height:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
+		<text class="text-gray">啥也木有~</text>
+	</view>
+</view>

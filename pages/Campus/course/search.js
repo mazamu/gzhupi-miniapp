@@ -21,7 +21,14 @@ Page({
       type: "专业必修课程"
     },
   },
-
+//跳转到评价页面
+post(e){
+  console.log(e.currentTarget.dataset.index)
+  var index=e.currentTarget.dataset.index
+  wx.navigateTo({
+    url: "/pages/Campus/evaluation/post?course_id=" + this.data.courses[index].kch_id + '&teacher_id=' + this.data.courses[index].jgh_id+'&course_name='+this.data.courses[index].kcmc+'&teacher='+this.data.courses[index].xm,
+  })
+},
   onLoad: function(options) {
     this.getCourse("通识类选修课", true)
   },
@@ -30,6 +37,13 @@ Page({
 
   },
   catchtap() {},
+
+  //跳转到课评列表
+  toevals(){
+    wx.navigateTo({
+      url: '/pages/Campus/evaluation/index',
+    })
+  },
 
   nav(e) {
     let id = e.currentTarget.id

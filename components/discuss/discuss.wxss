@@ -11,7 +11,10 @@
   justify-content: space-between;
   font-size: 80%;
 }
-
+.c-info-left{
+  display: flex;
+  
+}
 .send {
   display: flex;
   justify-content: space-between;

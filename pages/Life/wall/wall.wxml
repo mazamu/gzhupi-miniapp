@@ -26,7 +26,8 @@
 		<view class="cu-bar search bg-white">
 			<view class="search-form round" style="padding:5rpx">
 				<text class="cuIcon-search"></text>
-				<input type="text" placeholder="标题、内容、标签、昵称" confirm-type="search" bindinput="searchInput" value="{{queryStr}}"></input>
+				<input type="text" placeholder="标题、内容、标签、昵称" confirm-type="search"
+				 bindinput="searchInput" value="{{queryStr}}"></input>
 			</view>
 			<view class="action">
 				<button class="cu-btn bg-green round" bindtap="search">搜索</button>

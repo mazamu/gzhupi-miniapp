@@ -1,0 +1,111 @@
+page{
+  background-color: #f7f7f7;
+}
+.card{
+  margin-left: 2%;
+  width: 96%;
+  background-color: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  margin-bottom: 20rpx;
+}
+.card_top,.card_bottom{
+  display: flex;
+  margin-left: 2%;
+  width: 96%;
+  margin-top: 20rpx;
+}
+.card_top_left{
+  width: 80%;
+}
+.course,.type,.period{
+  display: flex;
+  align-items: center;
+  margin: 14rpx 0;
+  flex-wrap: wrap;
+}
+.course{
+  margin-top: 0;
+}
+.course image,.type image,.period image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 18rpx;
+}
+.course text{
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.credit{
+  color: #39b54a;
+  font-size: 22rpx;
+  height: 30rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 8rpx;
+  border: 1rpx solid;
+  border-radius: 20rpx;
+  margin-left: 12rpx;
+}
+.type text,.mid_item{
+  font-size: 30rpx;
+}
+.mark{
+  display: flex;
+  align-items: flex-end;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 20rpx;
+}
+.mark image{
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 12rpx;
+}
+.card_middle{
+  margin-left: 2%;
+  margin-top: 60rpx;
+}
+.mid_item{
+  display: flex;
+  margin: 14rpx 0;
+  align-items: center;
+}
+.mid_item image{
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 18rpx;
+}
+.teacher{
+  font-weight: bold;
+  font-size: 32rpx;
+}
+.mid_item  .sex{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  left: 4rpx;
+  top: -4rpx;
+}
+.card_bottom{
+justify-content: space-between;
+}
+.card_bottom_left{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.post_btn{
+  height: 54rpx;
+}
+.phone{
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #8a8a8a;
+}
+.phone image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 6rpx;
+}

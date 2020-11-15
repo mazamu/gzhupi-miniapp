@@ -1,10 +1,70 @@
-<navBar title="课程评价"></navBar>
+<wxs src='./mark.wxs' module="tool"></wxs>
 
-<view style='margin-top:300rpx;display:flex;justify-content:center;align-item:center'>
-  <image style='width:250rpx' mode='widthFix' src='https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/rili.png'></image>
+<navBar title="课评详情"></navBar>
+
+<fake wx:if="{{mode && mode!='prod'}}" type="eval"></fake>
+<view class="card" wx:if="{{mode=='prod'}}">
+  <view class="card_top">
+    <view class="card_top_left">
+      <view class="course">
+        <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/course.png"></image>
+        <text>{{object.course_name}}</text>
+        <view class="credit" wx:if="{{object.credit}}">{{object.credit}}学分</view>
+      </view>
+      <view class="type" wx:if="{{object.course_type}}">
+        <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/c_type.png"></image>
+        <text>{{object.course_type}}</text>
+      </view>
+      <view class="period" wx:if="{{object.period}}">
+        <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/period.png"></image>
+        <text>{{object.period}}</text>
+      </view>
+    </view>
+      <!-- 操作 -->
+      <view class="text-xxl operate">
+        <text bindtap="like" wx:if="{{!tool.isStar(object.star_list,uid)}}"
+          class="cuIcon-like text-red margin-left-sm"></text>
+        <text bindtap="like" wx:if="{{tool.isStar(object.star_list,uid)}}"
+          class="cuIcon-likefill text-red margin-left-sm"></text>
+        <button class="blank-btn" open-type='share'>
+          <text class="cuIcon-share text-green margin-left-sm"></text>
+        </button>
+      </view>
+  </view>
+  <view class="card_middle">
+    <view class="mid_item">
+      <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/teacher.png"></image>
+      <text class="teacher">{{object.teacher}}</text>
+      <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/female.png" wx:if="{{object.sex=='女'}}" class="sex"></image>
+      <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/male.png" wx:if="{{object.sex=='男'}}" class="sex"></image>
+      <view class="phone" wx:if="{{object.phone}}" bindtap="call">
+        <text>{{object.phone}}</text>
+        <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/call.png"></image>
+      </view>
+    </view>
+    <view class="mid_item" wx:if="{{object.college}}">
+      <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/college.png"></image>
+      <text>{{object.college}}</text>
+    </view>
+    <view class="mid_item" wx:if="{{object.title}}">
+      <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/title.png"></image>
+      <text>{{object.title}}</text>
+    </view>
+  </view>
+  <view class="card_bottom">
+    <view class="mark">
+      <image src="/assets/rate_active.png"></image>
+      <text wx:if="{{object.mark}}" style="color:{{tool.color(object.mark)}}">{{tool.fixed(object.mark)}}</text>
+      <text wx:else>暂无</text>
+    </view>
+    <view class="card_bottom_left">
+      <button bindtap="post" class="cu-btn shadow-blur bg-green post_btn">参与课评</button>
+      <view class="text-gray text-lg text-right padding-sm" style="flex:1">
+        <text class="cuIcon-like margin-lr-xs"></text>{{object.liked}}
+        <text class="cuIcon-messagefill margin-lr-xs"></text>{{object.discussed}}
+      </view>
+    </view>
+  </view>
 </view>
 
-<view style='text-align:center;margin:50rpx'>
-  <view style='font-weight:bold;margin:30rpx'>功能简介</view>
-  <view>用户可发表自己对各课程及老师的教学评价，方便同学们选课时相互参考。</view>
-</view>
+<discuss object_id="{{object.id}}" object="t_teach_evaluation" id="discuss"></discuss>

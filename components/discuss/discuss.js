@@ -24,7 +24,7 @@ Component({
 
 
   data: {
-    mark: 0,  //评分
+    mark: 0, //评分
     content: "",
     authorized: true,
     debounce: false,
@@ -173,11 +173,11 @@ Component({
         this.atSomebody(e)
         return
       }
-
+      var content = '是否删除评论？'
       let that = this
       wx.showModal({
         title: '提示',
-        content: '是否删除留言？',
+        content: content,
         success(res) {
           if (res.confirm) {
             wx.$ajax({
@@ -230,11 +230,15 @@ Component({
     },
 
     query(object_id) {
-
       let query = {
+        object: this.data.object,
         object_id: object_id,
         _order: "created_at",
       }
+      if (this.data.object == 't_teach_evaluation') {
+        query["_order"] = "-created_at"
+      }
+
       query = wx.$objectToQuery(query)
 
       wx.$ajax({

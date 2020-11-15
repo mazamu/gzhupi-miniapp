@@ -1,0 +1,38 @@
+//把分数保留两位小数
+var fixed=function(num)
+{
+  var s_x = num.toString();
+   var pos_decimal = s_x.indexOf('.');
+   if (pos_decimal < 0) {
+       pos_decimal = s_x.length;
+       s_x += '.';
+   }
+  while (s_x.length <= pos_decimal + 2) {
+  s_x += '0';
+  }
+  return s_x;
+}
+//根据分值改变颜色
+var color=function(num)
+{
+  if(num>=4) return '#39b54a'
+  if(num>=2&&num<4) return '#707070'
+  if(num<2) return '#d81e06'
+  else{
+    return '#bfbfbf'
+  }
+}
+//判断点赞
+var isStar = function(arr, uid) {
+  var i = 0
+  if (arr == null || arr == undefined) return false
+  for (i; i < arr.length; i++) {
+    if (arr[i].created_by == uid) return true
+  }
+  return false
+}
+module.exports={
+  fixed:fixed,
+  color:color,
+  isStar:isStar
+}

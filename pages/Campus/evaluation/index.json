@@ -1,3 +1,8 @@
 {
-  "usingComponents": {}
+  "backgroundTextStyle": "dark",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "navBar": "/pages/Components/navBar",
+    "rateStar": "/components/rateStar/rateStar"
+  }
 }

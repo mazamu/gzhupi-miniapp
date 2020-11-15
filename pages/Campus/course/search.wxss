@@ -115,6 +115,10 @@ button::after {
   font-weight: bold;
   padding: 10rpx 0;
   color: rgb(88, 88, 88);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10rpx;
 }
 
 .tips {

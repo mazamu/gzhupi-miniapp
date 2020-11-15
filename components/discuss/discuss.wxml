@@ -1,7 +1,10 @@
-<view style="background:rgba(255, 255, 255, 0.7)">
-	<view style="padding:20rpx">评论区</view>
+<wxs src='../../pages/Campus/evaluation/mark.wxs' module="tool"></wxs>
 
-	<view wx:for="{{comments}}" wx:key="index" class="comment">
+<view style="background:rgba(255, 255, 255, 0.7)">
+	<view style="padding:20rpx" wx:if="{{object=='t_topic'}}">评论区</view>
+	<view style="padding:20rpx" wx:if="{{object=='t_teach_evaluation'}}">课评汇</view>
+
+	<view wx:for="{{comments}}" wx:key="{{item.id}}" class="comment">
 		<view bindtap="atSomebody" data-item="{{item}}" style="flex:1">
 			<view class="cu-avatar round sub" style="background-image:url({{item.avatar}});background-position:center">
 				<view wx:if="{{item.gender>0}}" class="cu-tag badge light {{item.gender==2?'cuIcon-female bg-pink':'cuIcon-male bg-blue'}}"></view>
@@ -10,20 +13,29 @@
 		<view bindtap="deleteComment" style="flex:6" data-item="{{item}}">
 			<view class="c-info">
 				<view style="color:gray">{{item.nickname}}</view>
-				<view style="color:gray">
-					{{item.created_at}}
+				<view class="c-info-left">
+					<view style="color:{{tool.color(item.mark)}};font-weight:bold;margin-right:28rpx;" wx:if="{{item.mark}}">
+						<text class="cuIcon-favorfill lg text-yellow" wx:for="{{item.mark}}" style="margin-right:2rpx;font-size:28rpx;"></text>
+						{{item.mark}}分</view>
+					<view style="color:gray">
+						{{item.created_at}}
+					</view>
 				</view>
 			</view>
-			<view style="margin:5rpx">{{item.content}}</view>
+			<view style="margin:5rpx;white-space:pre-wrap;">{{item.content}}</view>
 		</view>
 	</view>
-
-	<view class="flex margin-lr">
+	<view wx:if="{{comments.length==0 && object=='t_teach_evaluation'}}" 
+	class="flex flex-direction align-center margin-xl">
+		<image style="width:150rpx;height:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
+		<text class="text-gray">暂无课评~</text>
+	</view>
+	<view class="flex margin-lr" hidden="{{object=='t_teach_evaluation'}}">
 		<switch class="margin-right sm" checked='{{anonymous}}' bindchange='anonymousSwitch'></switch>
 		<input wx:if="{{anonymous}}" focus bindinput="inputBind" data-field="anonymity" value="{{anonymity}}"  placeholder="{{placeholder}}" maxlength="20" cursor-spacing="100"></input>
 	</view>
 
-	<view class="send">
+	<view class="send" hidden="{{object=='t_teach_evaluation'}}">
 		<open-data wx:if="{{!anonymous}}" type="userAvatarUrl" class='avatar'></open-data>
     <image wx:if="{{anonymous}}" class='avatar' src="{{anonymous_pic}}" ></image>
 		<input bindinput="commentInput" value="{{content}}" class="solid-bottom" maxlength="300" cursor-spacing="50"></input>

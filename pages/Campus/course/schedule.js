@@ -125,10 +125,20 @@ Page({
         })
         break
       case "1": //添加
-        wx.navigateTo({
-          url: '/pages/Campus/evaluation/evaluation',
+      let id = this.data.openTarget
+      let detail = this.data.kbList[id]
+      detail.teacher_id = detail.teacher_id || detail.jgh_id
+
+      if (!detail.course_id || !detail.teacher_id) {
+        wx.showModal({
+          title: "错误提示",
+          content: "该课程信息缺少【课程ID/教师ID】请尝试重新同步课表"
         })
-        break
+        return
+      }
+      wx.navigateTo({
+        url: "/pages/Campus/evaluation/post" + wx.$objectToQuery(detail),
+      })
       case "2": //删除
         break
     }

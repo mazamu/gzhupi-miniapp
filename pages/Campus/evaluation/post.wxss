@@ -1,0 +1,96 @@
+/* pages/Campus/evaluation/post.wxss */
+@import '../../../components/discuss/discuss.wxss';
+
+page{
+  background-color: #f7f7f7;
+}
+.evaluation{
+  background-color: white;
+  overflow: hidden;
+  margin: 0 2%;
+  border-radius: 20rpx;
+}
+.rate{
+  margin: 40rpx;
+  margin-left: 5%;
+  display: flex;
+  align-items: center;
+}
+.stars{
+  width: 340rpx;
+  margin: 0 0 6rpx 20rpx;
+}
+.mystars{
+  width: 340rpx;
+}
+.stars image{
+  width: 54rpx;
+  height: 54rpx;
+  margin-right: 8rpx;
+}
+.rate>text:first-child{
+  font-size: 28rpx;
+  color: #515151;
+}
+.rate>text:last-child{
+  font-size: 26rpx;
+  color: #707070;
+}
+.guess{
+  margin-left: 5%;
+}
+.labels{
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 6rpx;
+}
+.label{
+  color: #707070;
+  font-size: 24rpx;
+  display: flex;
+  height: 40rpx;
+  line-height: 40rpx;
+  border: 1rpx solid;
+  border-radius: 22rpx;
+  flex-shrink: 0;
+  padding: 0 12rpx;
+    margin: 6rpx;
+}
+.guess>text{
+  font-size: 28rpx;
+  flex-shrink: 0;
+  color: #515151;
+  margin-right: 20rpx;
+}
+.pholder{
+  font-size: 26rpx;
+}
+.area{
+  margin-left: 5%;
+  margin-top: 50rpx;
+  width: 93%;
+  height: 250rpx;
+  font-size: 26rpx;
+}
+.avatar{
+  margin-left: 20rpx;
+  margin-right: 450rpx;
+}
+.send{
+  margin-bottom: 20rpx;
+}
+.other
+{
+  display: flex;
+  align-items: center;
+  text-decoration: underline;
+  font-size: 26rpx;
+  color: #39b54a;
+  margin-left: 5%;
+  margin-bottom: 40rpx;
+}
+.other image{
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 8rpx;
+}

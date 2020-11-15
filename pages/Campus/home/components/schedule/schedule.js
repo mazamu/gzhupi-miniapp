@@ -203,8 +203,11 @@ Component({
             })
             return
           }
+          // wx.navigateTo({
+          //   url: "/pages/Campus/evaluation/detail" + wx.$objectToQuery(detail),
+          // })
           wx.navigateTo({
-            url: "/pages/Campus/evaluation/detail" + wx.$objectToQuery(detail),
+            url: "/pages/Campus/evaluation/post" + wx.$objectToQuery(detail),
           })
           break
         case "2": //删除

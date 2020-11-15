@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "rateStar": "/components/rateStar/rateStar",
+    "navBar": "/pages/Components/navBar"
+  }
+}
