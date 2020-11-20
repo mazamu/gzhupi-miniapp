@@ -475,6 +475,7 @@ wx.$syncParam = async function () {
 wx.$update = function () {
   // 检测更新版本
   const updateManager = wx.getUpdateManager()
+  if (!updateManager) return
   updateManager.onCheckForUpdate(function (res) {
     // 请求完新版本信息的回调
     console.log("新版本：", res.hasUpdate)
@@ -482,7 +483,7 @@ wx.$update = function () {
   updateManager.onUpdateReady(function () {
     wx.showModal({
       title: '更新提示',
-      content: '新版本已经准备好，是否重启应用？\n如遇缓存丢失，请重启小程序。',
+      content: '新版本已经准备好，是否重启应用？',
       success(res) {
         if (res.confirm) {
           // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启

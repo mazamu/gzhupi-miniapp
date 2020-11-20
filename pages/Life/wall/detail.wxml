@@ -50,7 +50,18 @@
 				<!-- 内容 -->
 				<view class="margin-lr">
 					<view class="text-lg text-orange"># {{detail.title}} #</view>
-					<view class="text-content">{{detail.content}}</view>
+					<view class="text-content" data-content="{{detail.content}}" bindtap="setClipboard">{{detail.content}}</view>
+				</view>
+				<!-- 联系备注 -->
+				<view class="margin-lr margin-tb-sm" wx:if="{{detail.addi.remark || detail.addi.contact}}">
+					<view wx:if="{{detail.addi.remark}}" class="cu-capsule round" data-content="{{detail.addi.remark}}" bindtap="setClipboard">
+						<view class="cu-tag bg-blue">备注</view>
+						<view class="cu-tag line-blue">{{detail.addi.remark}}</view>
+					</view>
+					<view wx:if="{{detail.addi.contact}}" class="cu-capsule round" data-content="{{detail.addi.contact}}" bindtap="setClipboard">
+						<view class="cu-tag bg-orange">联系</view>
+						<view class="cu-tag line-orange">{{detail.addi.contact}}</view>
+					</view>
 				</view>
 				<!-- 标签、统计 -->
 				<view class="flex align-center margin-xs">

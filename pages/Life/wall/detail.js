@@ -38,13 +38,16 @@ Page({
     }, 500)
   },
 
-  // onShareTimeline: function () {
-  //   return {
-  //     title: this.data.navTitle + ": " + this.data.detail.title,
-  //     query: this.data.id,
-  //     imageUrl: this.data.detail.image[0],
-  //   }
-  // },
+  onShareTimeline: function () {
+    let detail = this.data.detail
+    return {
+      title: this.data.navTitle + ": " + detail.title,
+      query: {
+        id: this.data.id
+      },
+      imageUrl: detail.image.length > 0 ? detail.image[0] : "",
+    }
+  },
 
   onShareAppMessage: function () {
     return {
@@ -59,6 +62,17 @@ Page({
         })
       }
     }
+  },
+
+  setClipboard(e) {
+    wx.setClipboardData({
+      data: e.currentTarget.dataset.content,
+      success: function (res) {
+        wx.showToast({
+          title: '复制成功',
+        })
+      }
+    })
   },
 
   // true 说明在防抖期间，应该停止执行
@@ -150,7 +164,7 @@ Page({
     })
   },
 
-//操作点赞、认领、删除主题
+  //操作点赞、认领、删除主题
   operate(e) {
     if (this.isDebounce()) return
 
@@ -296,7 +310,7 @@ Page({
         console.log(err)
       })
   },
-//删除主题
+  //删除主题
   delByPk(row_id) {
     if (!row_id) return
     wx.$ajax({
@@ -325,7 +339,7 @@ Page({
         console.error(err)
       })
   },
-//删除主题时删除存储的文件
+  //删除主题时删除存储的文件
   delFile(fileIDs = []) {
     if (!fileIDs) return
     let MyFile = new wx.BaaS.File()

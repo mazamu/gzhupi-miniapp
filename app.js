@@ -49,7 +49,9 @@ App({
     this.aldstat.sendEvent('小程序启动时长', {
       time: Date.now() - startTime
     })
-    wx.BaaS.reportTemplateMsgAnalytics(options)
+    if (wx.BaaS){
+      wx.BaaS.reportTemplateMsgAnalytics(options)
+    }
   },
 
   // 初始化知晓云
