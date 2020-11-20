@@ -13,7 +13,7 @@
 	<view class="cu-bar search bg-white">
 		<view class="search-form round" style="padding:5rpx">
 			<text class="cuIcon-search"></text>
-			<input type="text" placeholder="课程、教师、课程类型" confirm-type="search" bindinput="searchInput"
+			<input type="text" placeholder="课程、教师、学院、课程类型..." confirm-type="search" bindinput="searchInput"
 				value="{{queryStr}}"></input>
 		</view>
 		<view class="action">
@@ -61,7 +61,7 @@
 		<text class="text-gray text-df">木有更多啦~</text>
 	</view>
 	<view wx:if="{{dataSet.length==0 && !loading}}" class="flex flex-direction align-center margin-xl">
-		<image style="width:150rpx;height:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
+		<image style="width:150rpx;height:150rpx;margin-top:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
 		<text class="text-gray">啥也木有~</text>
 	</view>
 </view>

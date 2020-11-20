@@ -168,7 +168,7 @@ wx.$navTo = function (e, args) {
           wx.switchTab({
             url: e.target.dataset.url + args_str,
             fail: err => {
-              console.err(err)
+              console.error(err)
             }
           })
         }
@@ -181,7 +181,7 @@ wx.$navTo = function (e, args) {
           wx.switchTab({
             url: e.currentTarget.dataset.url + args_str,
             fail: err => {
-              console.err(err)
+              console.error(err)
             }
           })
         }

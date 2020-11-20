@@ -13,6 +13,7 @@ Page({
     loadDone: false, //加载完毕,控制底部木有更多
     queryStr: "", //搜索的字符串
     dataSet: [],
+    defaultType: "$in.通识类选修课程,专业选修课程" //默认显示的课程类型
   },
   todetail(e){
     var index=e.currentTarget.dataset.index;
@@ -62,7 +63,8 @@ Page({
     let query = {
       _page: this.data.page,
       _page_size: this.data.pageSize,
-      _order: "-order_time",
+      // _order: "-order_time",
+      course_type: this.data.defaultType
     }
     query = wx.$objectToQuery(query)
 

@@ -28,14 +28,14 @@
 	<view wx:if="{{comments.length==0 && object=='t_teach_evaluation'}}" 
 	class="flex flex-direction align-center margin-xl">
 		<image style="width:150rpx;height:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
-		<text class="text-gray">暂无课评~</text>
+		<text class="text-gray margin">暂无课评~</text>
 	</view>
-	<view class="flex margin-lr" hidden="{{object=='t_teach_evaluation'}}">
+	<view class="flex margin-lr">
 		<switch class="margin-right sm" checked='{{anonymous}}' bindchange='anonymousSwitch'></switch>
 		<input wx:if="{{anonymous}}" focus bindinput="inputBind" data-field="anonymity" value="{{anonymity}}"  placeholder="{{placeholder}}" maxlength="20" cursor-spacing="100"></input>
 	</view>
 
-	<view class="send" hidden="{{object=='t_teach_evaluation'}}">
+	<view class="send">
 		<open-data wx:if="{{!anonymous}}" type="userAvatarUrl" class='avatar'></open-data>
     <image wx:if="{{anonymous}}" class='avatar' src="{{anonymous_pic}}" ></image>
 		<input bindinput="commentInput" value="{{content}}" class="solid-bottom" maxlength="300" cursor-spacing="50"></input>

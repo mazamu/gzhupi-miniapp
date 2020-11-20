@@ -1,6 +1,6 @@
 <wxs src='./mark.wxs' module="tool"></wxs>
 
-<navBar title="课评详情"></navBar>
+<navBar title="课评详情" navColor="rgba(255, 255, 255, 0.2)"></navBar>
 
 <fake wx:if="{{mode && mode!='prod'}}" type="eval"></fake>
 <view class="card" wx:if="{{mode=='prod'}}">
