@@ -133,7 +133,8 @@ Component({
     atSomebody(e) {
       let item = e.currentTarget.dataset.item
       this.setData({
-        reply_item: item
+        reply_item: item,
+        focus: true
       })
     },
     removeReply() {
@@ -162,7 +163,7 @@ Component({
       }, 2000)
       let object_id = this.data.object_id
       let content = this.data.content
-      if (object_id == "" || content == "") {
+      if (object_id.replace(/ /g,"") == "" || content.replace(/ /g,"") == "") {
         console.log("illegal argument")
         return
       }

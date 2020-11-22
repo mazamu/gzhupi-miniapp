@@ -126,12 +126,12 @@ Page({
     }
 
     if (form.anonymous) {
-      form.anonymity = this.data.anonymity
+      form.anonymity = this.data.anonymity.replace(/ /g,"")
       if (form.anonymity == "") {
         form.anonymity = "匿名童鞋"
       }
     }
-    if (form.title == "" || form.content == "") {
+    if (form.title.replace(/ /g,"") == "" || form.content.replace(/ /g,"") == "") {
       wx.showToast({
         title: '标题/内容不能为空',
         icon: "none",
@@ -182,7 +182,6 @@ Page({
     // 保存数据
     wx.$ajax({
         url: wx.$param.server["prest"] + wx.$param.server["scheme"] + "/t_topic",
-        // url: "http://localhost:9000/api/v1/postgres/public/t_topic",
         data: form,
         loading: true,
         header: {
@@ -228,7 +227,7 @@ Page({
 
   // 添加标签
   labelAdd: function () {
-    if (this.data.labelInput == "" || this.data.labelInput == undefined) {
+    if (this.data.labelInput == undefined || this.data.labelInput.replace(/ /g,"") == "") {
       wx.showToast({
         title: '请先输入标签内容',
         icon: "none"

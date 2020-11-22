@@ -13,7 +13,7 @@
 		<view bindtap="deleteComment" style="flex:6" data-item="{{item}}">
 			<view class="c-info">
 				<view style="color:gray">{{item.nickname}} 
-					<text wx:if="{{item.created_by==owner_id}}" class="cu-tag round sm line-blue">楼主</text>
+					<text wx:if="{{item.created_by==owner_id && object=='t_topic'}}" class="cu-tag round sm line-blue">楼主</text>
 				</view>
 				<view class="c-info-left">
 					<view style="color:{{tool.color(item.mark)}};font-weight:bold;margin-right:28rpx;" wx:if="{{item.mark}}">
@@ -25,7 +25,7 @@
 				</view>
 			</view>
 			<view style="margin:5rpx;white-space:pre-wrap;">
-				<text class="text-blue" wx:if="{{item.reply_id}}">@{{item.reply_nickname}} </text>{{item.content}}</view>
+				<text class="text-blue" wx:if="{{item.reply_nickname}}">@{{item.reply_nickname}} </text>{{item.content}}</view>
 		</view>
 	</view>
 	<view wx:if="{{comments.length==0 && object=='t_teach_evaluation'}}" 
@@ -42,7 +42,7 @@
 	<view class="send">
 		<open-data wx:if="{{!anonymous}}" type="userAvatarUrl" class='avatar'></open-data>
     <image wx:if="{{anonymous}}" class='avatar' src="{{anonymous_pic}}" ></image>
-		<input bindinput="commentInput" value="{{content}}" class="solid-bottom" maxlength="300" cursor-spacing="50"></input>
+		<input focus="{{focus}}" bindinput="commentInput" value="{{content}}" class="solid-bottom" maxlength="300" cursor-spacing="50"></input>
 		<button wx:if="{{authorized}}" bindtap="checkComment" class="cu-btn shadow-blur bg-green">发送</button>
 		<button wx:if="{{!authorized}}" class="cu-btn shadow-blur bg-green" open-type="getUserInfo" bindgetuserinfo='userInfoHandler'>授权</button>
 	</view>
