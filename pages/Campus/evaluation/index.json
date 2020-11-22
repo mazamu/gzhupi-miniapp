@@ -3,6 +3,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "navBar": "/pages/Components/navBar",
-    "rateStar": "/components/rateStar/rateStar"
+    "rateStar": "/components/rateStar/rateStar",
+    "fake": "/components/fake/fake"
   }
 }

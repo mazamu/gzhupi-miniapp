@@ -3,6 +3,7 @@
 <navBar title="课程评价" navColor="rgba(255, 255, 255, 0.8)"></navBar>
 
 <fake wx:if="{{mode && mode!='prod'}}" type="eval"></fake>
+
 <!-- 加载动画 -->
 <view class='cu-load load-modal' wx:if="{{loading}}">
 	<view class='cuIcon-emojifill text-orange'></view>
@@ -21,6 +22,7 @@
 		</view>
 	</view>
 </view>
+
 <view wx:if="{{mode=='prod'}}">
 
 	<view class="eval_card" wx:for="{{dataSet}}" wx:key="{{item.id}}" bindtap="todetail" data-index="{{index}}">
@@ -61,7 +63,8 @@
 		<text class="text-gray text-df">木有更多啦~</text>
 	</view>
 	<view wx:if="{{dataSet.length==0 && !loading}}" class="flex flex-direction align-center margin-xl">
-		<image style="width:150rpx;height:150rpx;margin-top:150rpx" src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
+		<image style="width:150rpx;height:150rpx;margin-top:150rpx"
+			src="https://cos.ifeel.vip/gzhu-pi/images/icon/empty.svg"></image>
 		<text class="text-gray">啥也木有~</text>
 	</view>
 </view>

@@ -7,7 +7,7 @@
 </view>
 
 <view wx:if="{{type=='eval'}}">
-	<navBar title="选课评价"></navBar>
+	<!-- <navBar title="选课评价"></navBar> -->
 	<view style='margin-top:300rpx;display:flex;justify-content:center;align-item:center'>
 		<image style='width:250rpx' mode='widthFix' src='https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/rili.png'></image>
 	</view>

@@ -25,24 +25,28 @@ Component({
       wx.navigateTo({
         url: this.data.res.url,
       })
-    }
-
-  },
-  lifetimes: {
-    attached: function() {
+    },
+    sync() {
       let now = new Date().getTime()
       let loc = wx.getStorageSync("last_time")
       let intv = 0
       if (loc != "") intv = now - Number(loc)
-      // console.log(intv)
-      let that = this
-      wx.BaaS.invokeFunction('tips').then(res => {
-        if (intv > res.data["time"] || intv == 0) {
-          that.setData({
-            res: res.data
-          })
-        }
-      })
+
+      let data = wx.$param["tips"]
+      if (data && intv > data["time"] || intv == 0) {
+        this.setData({
+          res: data
+        })
+      }
+    }
+
+  },
+  lifetimes: {
+    attached: function () {
+      this.sync()
+      setTimeout(() => {
+        this.sync()
+      }, 3000);
     }
   },
 })
