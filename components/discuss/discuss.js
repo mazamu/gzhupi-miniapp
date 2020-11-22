@@ -20,10 +20,27 @@ Component({
       type: String,
       value: "t_topic"
     },
+
+    // 页面路径
+    page_url: {
+      type: String,
+      value: ""
+    },
+
+    // 楼主用户id
+    owner_id: {
+      type: Number,
+      value: 0
+    },
+
   },
 
 
   data: {
+    reply_id: 0, //回复评论id
+    reply_nickname: "", //回复对象昵称
+    reply_open_id: "", //回复对象openid
+
     mark: 0, //评分
     content: "",
     authorized: true,
@@ -90,9 +107,6 @@ Component({
 
       wx.BaaS.auth.getCurrentUser().then(user => {
         console.log("user", user)
-        // if (user.gender == 0) this.data.placeholder = "匿名童鞋"
-        // if (user.gender == 1) this.data.placeholder = "匿名小哥哥"
-        // if (user.gender == 2) this.data.placeholder = "匿名小姐姐"
         this.data.placeholder = user.nickname
         this.setData({
           placeholder: this.data.placeholder
@@ -118,9 +132,13 @@ Component({
     // @某用户
     atSomebody(e) {
       let item = e.currentTarget.dataset.item
-      let content = "@" + item.nickname + " " + this.data.content
       this.setData({
-        content: content
+        reply_item: item
+      })
+    },
+    removeReply() {
+      this.setData({
+        reply_item: null
       })
     },
 
@@ -160,6 +178,10 @@ Component({
         anonymous: this.data.anonymous,
         anonymity: this.data.anonymity,
         mark: this.data.mark
+      }
+      // 回复用户id
+      if (this.data.reply_item && this.data.reply_item.id) {
+        data["reply_id"] = this.data.reply_item.id
       }
       this.create(data)
     },
@@ -224,8 +246,10 @@ Component({
           wx.showToast({
             title: '留言成功',
           })
+
           this.query(this.data.object_id)
           this.triggerEvent('success', res.data)
+          this.replyNotice(data.content)
         })
     },
 
@@ -258,7 +282,47 @@ Component({
             comments: res.data
           })
         })
-    }
+    },
+
+    // 评论回复，发送通知给层主
+    replyNotice(content) {
+      if (!this.data.reply_item) return
+      let item = this.data.reply_item
+
+      let sender = wx.getStorageSync('gzhupi_user').nickname
+      if (this.data.anonymity) {
+        sender = this.data.anonymity //使用匿名信息
+      }
+      if (!sender) return
+
+      let data = {
+        touser: item.open_id,
+        page: this.data.page_url,
+        content: content,
+        title: "回复：" + item.content,
+        type: "comment",
+        sender: sender,
+      }
+      if (!data.touser || !data.page || !data.content || !data.sender || !item.content) {
+        console.log("通知参数不完整：", data)
+        return
+      }
+      console.log("通知参数", data)
+      this.removeReply()
+
+      wx.cloud.callFunction({
+        // 需调用的云函数名
+        name: 'sendMsg',
+        // 传给云函数的参数
+        data: data,
+        complete: function (res) {
+          console.log(res.result)
+          if (res.result && res.result.errCode == 43101) {
+            console.log("该用户未订阅通知")
+          }
+        }
+      })
+    },
   }
 
 })

@@ -496,3 +496,12 @@ wx.$update = function () {
     // 新版本下载失败
   })
 }
+
+// 获取当前页面url，带参数
+wx.$pageUrl = function () {
+  var pages = getCurrentPages()
+  let curPage = pages[pages.length - 1]
+  if (!curPage) return
+  let page_url = curPage.route + wx.$objectToQuery(curPage.options)
+  return page_url
+}

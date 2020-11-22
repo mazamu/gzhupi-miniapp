@@ -1,4 +1,4 @@
-var utils = require("../../../utils/date.js")
+const Page = require('../../../utils/sdk/ald-stat.js').Page;
 let discuss=null;//评论组件
 Page({
 
@@ -19,8 +19,8 @@ Page({
   //参与教评
   post() {
     //从列表进入详情
-    if(this.data.from)
-    {
+    if(this.data.from){
+      wx.$subscribe()
       wx.navigateTo({
         url: "/pages/Campus/evaluation/post?course_id=" + this.data.object.course_id + '&teacher_id=' + this.data.object.teacher_id+'&from='+'from_detail',
       })
@@ -47,8 +47,10 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    if(Object.keys(options).length===3)
-    {
+    this.setData({
+      page_url: wx.$pageUrl()
+    })
+    if(Object.keys(options).length===3){
       this.data.from=options.from
     }
     if (this.fake()) return
@@ -160,7 +162,7 @@ Page({
     return {
       title: this.data.object.course_name + ": " + this.data.object.teacher,
       desc: '',
-      path: '/pages/Campus/evaluation/detail?course_id=' + this.data.object.course_id + '&teacher_id=' + this.data.object.teacher_id,
+      path: wx.$pageUrl(),
       imageUrl: 'https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/rili.png',
       success: function (res) {
         wx.showToast({

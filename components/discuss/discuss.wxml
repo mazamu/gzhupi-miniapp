@@ -12,7 +12,9 @@
 		</view>
 		<view bindtap="deleteComment" style="flex:6" data-item="{{item}}">
 			<view class="c-info">
-				<view style="color:gray">{{item.nickname}}</view>
+				<view style="color:gray">{{item.nickname}} 
+					<text wx:if="{{item.created_by==owner_id}}" class="cu-tag round sm line-blue">楼主</text>
+				</view>
 				<view class="c-info-left">
 					<view style="color:{{tool.color(item.mark)}};font-weight:bold;margin-right:28rpx;" wx:if="{{item.mark}}">
 						<text class="cuIcon-favorfill lg text-yellow" wx:for="{{item.mark}}" style="margin-right:2rpx;font-size:28rpx;"></text>
@@ -22,7 +24,8 @@
 					</view>
 				</view>
 			</view>
-			<view style="margin:5rpx;white-space:pre-wrap;">{{item.content}}</view>
+			<view style="margin:5rpx;white-space:pre-wrap;">
+				<text class="text-blue" wx:if="{{item.reply_id}}">@{{item.reply_nickname}} </text>{{item.content}}</view>
 		</view>
 	</view>
 	<view wx:if="{{comments.length==0 && object=='t_teach_evaluation'}}" 
@@ -33,6 +36,7 @@
 	<view class="flex margin-lr">
 		<switch class="margin-right sm" checked='{{anonymous}}' bindchange='anonymousSwitch'></switch>
 		<input wx:if="{{anonymous}}" focus bindinput="inputBind" data-field="anonymity" value="{{anonymity}}"  placeholder="{{placeholder}}" maxlength="20" cursor-spacing="100"></input>
+		<view class="margin-left-sm text-blue" wx:if="{{reply_item}}" bindtap="removeReply">@{{reply_item.nickname}}</view>
 	</view>
 
 	<view class="send">

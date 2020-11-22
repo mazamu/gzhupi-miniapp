@@ -23,7 +23,10 @@ Page({
 
     if (this.fake()) return
 
-    if (!options.id) options.id = 4
+    if (!options.id) return
+    this.setData({
+      page_url: wx.$pageUrl()
+    })
     this.data.id = options.id
     this.getDetail(options.id)
   },
@@ -53,7 +56,7 @@ Page({
     return {
       title: this.data.navTitle + ": " + this.data.detail.title,
       desc: '',
-      path: '/pages/Life/wall/detail?id=' + this.data.id,
+      path: wx.$pageUrl(),
       imageUrl: this.data.detail.image[0],
       success: function (res) {
         wx.showToast({
@@ -112,6 +115,10 @@ Page({
   // 评论成功回调，发送通知
   discussSuccess(e) {
     console.log("留言回调", e)
+    if (e.reply_id) {
+      return //回复楼层，不通知楼主
+    }
+
     let cur_uid = wx.getStorageSync('gzhupi_user').id
     if (cur_uid == this.data.detail.created_by) return
 
@@ -127,15 +134,15 @@ Page({
       // 传给云函数的参数
       data: {
         touser: this.data.detail.open_id,
-        page: '/pages/Life/wall/detail?id=' + this.data.id,
+        page: wx.$pageUrl(),
         content: e.detail.content,
         title: this.data.detail.title,
         type: "comment",
         sender: sender,
       },
       complete: function (res) {
-        console.log(res.result)
-        if (res.result.errCode == 43101) {
+        console.log(res)
+        if (res.result && res.result.errCode == 43101) {
           console.log("该用户未订阅通知")
         }
       }
@@ -153,7 +160,7 @@ Page({
       // 传给云函数的参数
       data: {
         touser: this.data.detail.open_id,
-        page: '/pages/Life/wall/detail?id=' + this.data.id,
+        page: wx.$pageUrl(),
         content: "有人领取了你的表白，点击查看",
         type: "unread",
         sender: sender,

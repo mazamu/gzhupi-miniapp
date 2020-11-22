@@ -67,4 +67,4 @@
   </view>
 </view>
 
-<discuss object_id="{{object.id}}" object="t_teach_evaluation" id="discuss"></discuss>
+<discuss object_id="{{object.id}}" object="t_teach_evaluation" page_url="{{page_url}}" id="discuss"></discuss>

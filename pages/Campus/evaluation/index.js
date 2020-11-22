@@ -1,4 +1,4 @@
-// pages/Campus/evaluation/index.js
+const Page = require('../../../utils/sdk/ald-stat.js').Page;
 var utils = require("../../../utils/date.js")
 
 Page({
