@@ -22,7 +22,7 @@ Page({
     if(this.data.from){
       wx.$subscribe()
       wx.navigateTo({
-        url: "/pages/Campus/evaluation/post?course_id=" + this.data.object.course_id + '&teacher_id=' + this.data.object.teacher_id+'&from='+'from_detail',
+        url: "/pages/Campus/evaluation/post?course_id=" + this.data.object.course_id + '&teacher_id=' + this.data.object.teacher_id+'&from='+'from_detail'+'&course_name='+this.data.object.course_name+'&teacher='+this.data.object.teacher,
       })
     }
     else{

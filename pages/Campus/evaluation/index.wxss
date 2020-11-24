@@ -24,17 +24,19 @@ page {
 }
 .course_name,.mark{
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: flex-end;
   margin-right: 20rpx;
 }
 .mark{
   /* margin-top: 20rpx; */
-  margin-left: auto;
+  margin-left: 16rpx;
+  margin-right: auto;
 }
 .course_name text{
   font-weight: bold;
   font-size: 36rpx;
+  max-width: 540rpx;
 }
 .credit{
   color: #39b54a;

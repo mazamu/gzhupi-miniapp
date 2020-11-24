@@ -20,7 +20,7 @@ page{
 }
 .course,.type,.period{
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   margin: 14rpx 0;
   flex-wrap: wrap;
 }
@@ -35,6 +35,10 @@ page{
 .course text{
   font-weight: bold;
   font-size: 32rpx;
+  max-width: 360rpx;
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
 }
 .credit{
   color: #39b54a;

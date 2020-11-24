@@ -31,6 +31,7 @@
 				<text>{{item.course_name}}</text>
 				<view class="credit" wx:if="{{item.credit}}">{{item.credit}}学分</view>
 			</view>
+			<image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/edit.png" catchtap="post" data-index="{{index}}" style="width:60rpx;height:60rpx;"></image>
 		</view>
 		<view class="card_middle">
 			<view class="mid_item" wx:if="{{item.course_type}}">
@@ -48,14 +49,14 @@
 			</view>
 		</view>
 		<view class="text-gray text-lg text-right padding-sm card_bottom" style="flex:1">
-			<text class="cuIcon-like margin-lr-xs"></text>{{item.liked}}
-			<text class="cuIcon-messagefill margin-lr-xs"></text>{{item.discussed}}
 			<view class="mark">
-				<rateStar class="stars" score="{{item.mark}}" readonly="true">
+				<rateStar class="stars" score="{{item.mark}}" id="{{item.id}}" readonly="true">
 				</rateStar>
 				<text wx:if="{{item.mark}}" style="color:{{tool.color(item.mark)}}">{{tool.fixed(item.mark)}}</text>
 				<text wx:else style="color:#515151;font-size:32rpx;">暂无</text>
 			</view>
+			<text class="cuIcon-like margin-lr-xs"></text>{{item.liked}}
+			<text class="cuIcon-messagefill margin-lr-xs"></text>{{item.discussed}}
 		</view>
 	</view>
 

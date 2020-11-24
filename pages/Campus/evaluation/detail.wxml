@@ -58,7 +58,9 @@
       <text wx:else>暂无</text>
     </view>
     <view class="card_bottom_left">
-      <button bindtap="post" class="cu-btn shadow-blur bg-green post_btn">参与课评</button>
+      <!-- <button bindtap="post" class="cu-btn shadow-blur bg-green post_btn">参与课评</button> -->
+			<image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/edit.png" catchtap="post" style="width:60rpx;height:60rpx;margin-right:20rpx;"></image>
+
       <view class="text-gray text-lg text-right padding-sm" style="flex:1">
         <text class="cuIcon-like margin-lr-xs"></text>{{object.liked}}
         <text class="cuIcon-messagefill margin-lr-xs"></text>{{object.discussed}}

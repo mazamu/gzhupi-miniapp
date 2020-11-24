@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    course_name:'',
+    teacher:'',
     from:null,//判断入口页面是否为课表处进入的
     score: null,
     authorized: true,
@@ -233,13 +235,18 @@ Page({
    */
   onLoad: function (options) {
     console.log(options)
-    if(Object.keys(options).length==3)
+    //从详情页面进入发布页面
+    if(options.from)
     {
-      this.data.from='from_detail'
+      this.data.from=options.from
     }
     if (this.fake()) return
     this.data.course_id=options.course_id;
     this.data.teacher_id=options.teacher_id;
+    this.setData({
+      course_name:options.course_name,
+      teacher:options.teacher
+    })
     //查询改课程号和教师号是否已经被创建
     wx.$ajax({
       url: wx.$param.server["prest"] + wx.$param.server["scheme"] + "/v_teach_evaluation?course_id=$eq." + options.course_id + "&teacher_id=$eq." + options.teacher_id,

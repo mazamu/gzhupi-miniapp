@@ -26,6 +26,13 @@
 <fake wx:if="{{mode && mode!='prod'}}" type="eval"></fake>
 
 <view class="evaluation" wx:if="{{mode=='prod'}}">
+  <view class="eval_object">
+    <view class="course_name">
+       <image src="https://shaw-1256261760.cos.ap-guangzhou.myqcloud.com/gzhu-pi/images/icon/green-book.png"></image>
+       {{course_name}}
+    </view>
+    <text class="teacher">{{teacher}}</text>
+  </view>
   <view class="rate">
     <text>综合评分</text>
     <view class="stars">

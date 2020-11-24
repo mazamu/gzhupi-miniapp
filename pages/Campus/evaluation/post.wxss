@@ -10,8 +10,32 @@ page{
   margin: 0 2%;
   border-radius: 20rpx;
 }
+.eval_object{
+  width: 90%;
+  margin-left: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28rpx;
+}
+.course_name image{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+.course_name,.teacher{
+  color: #39b54a;
+  font-size: 32rpx;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  max-width: 520rpx;
+}
+.teacher{
+  color: #f1a75c;
+}
 .rate{
-  margin: 40rpx;
+  margin: 20rpx 40rpx 40rpx;
   margin-left: 5%;
   display: flex;
   align-items: center;

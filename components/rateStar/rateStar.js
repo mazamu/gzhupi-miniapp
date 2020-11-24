@@ -14,7 +14,10 @@ Component({
 		},
 		score: {
 			type: Number,
-			default: 0
+			default: 0,
+			observer: function() {
+				this.refresh()
+      }
 		}
 	},
 
@@ -28,6 +31,16 @@ Component({
 	lifetimes: {
 		attached: function () {
 			// 在组件实例进入页面节点树时执行
+			this.refresh()
+		}
+	},
+	/**
+	 * 组件的方法列表
+	 */
+	methods: {
+		//重新渲染组件
+		refresh()
+		{
 			if (this.data.readonly) {
 				var _redScore = Math.floor(this.data.score)
 				var _halfScore=0;
@@ -41,12 +54,8 @@ Component({
 					grayScore: _grayScore
 				})
 			}
-		}
-	},
-	/**
-	 * 组件的方法列表
-	 */
-	methods: {
+		},
+
 		giveScore(e) {
 			if (this.data.readonly) {
 				return;

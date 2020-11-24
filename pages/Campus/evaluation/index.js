@@ -15,6 +15,14 @@ Page({
     dataSet: [],
     defaultType: "$in.通识类选修课程,专业选修课程" //默认显示的课程类型
   },
+  //跳转到评价页面
+post(e){
+  console.log(e.currentTarget.dataset.index)
+  var index=e.currentTarget.dataset.index
+  wx.navigateTo({
+    url: "/pages/Campus/evaluation/post?course_id=" + this.data.dataSet[index].course_id + '&teacher_id=' + this.data.dataSet[index].teacher_id+'&course_name='+this.data.dataSet[index].course_name+'&teacher='+this.data.dataSet[index].teacher,
+  })
+},
   todetail(e){
     var index=e.currentTarget.dataset.index;
     console.log(index)
@@ -59,7 +67,7 @@ Page({
   },
   // 获取列表
   getTopics(loadMore = false) {
-
+    var that=this;
     let query = {
       _page: this.data.page,
       _page_size: this.data.pageSize,
@@ -95,7 +103,6 @@ Page({
           loading: false,
           loadDone: res.data.length < this.data.pageSize ? true : false //加载完毕
         })
-
       }).catch(err => {
         console.log(err)
         this.setData({
